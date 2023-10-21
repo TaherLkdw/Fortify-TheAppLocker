@@ -1,0 +1,56 @@
+includepaths = . \
+           .. \
+           ./includes \
+           $QT_INSTALL_HEADERS \
+           $QT_INSTALL_HEADERS/QtCore \
+           $QT_INSTALL_HEADERS/QtGui \
+           $QT_INSTALL_HEADERS/QtQuick \
+           $QT_INSTALL_DOCS
+
+indexes = $QT_INSTALL_DOCS/qtcore/qtcore.index \
+            $QT_INSTALL_DOCS/qtqml/qtqml.index \
+            $QT_INSTALL_DOCS/qtquick/qtquick.index \
+            $QT_INSTALL_DOCS/qtdoc/qtdoc.index
+
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+include($QT_INSTALL_DOCS/config/exampleurl-qtbase.qdocconf)
+
+defines += qt6
+depends += \
+   qtcore \
+   qtqml \
+   qtquick \
+   qtdoc
+
+project = Fortify-TheAppLocker
+version = $QT_VERSION
+
+qhp = true
+qhp.projects            = Fortify
+qhp.Fortify.file                = fortify.qhp
+qhp.Fortify.namespace           = org.qt-project.fortify.$QT_VERSION_TAG
+qhp.Fortify.virtualFolder       = fortify
+qhp.Fortify.indexTitle          = Fortify-TheAppLocker
+qhp.Fortify.indexRoot           =
+
+qhp.Fortify.subprojects         = classes
+qhp.Fortify.subprojects.classes.title = C++ Classes
+qhp.Fortify.subprojects.classes.indexTitle = Fortify Main Application
+qhp.Fortify.subprojects.classes.selectors = class fake:headerfile
+qhp.Fortify.subprojects.classes.sortPages = true
+
+headers.fileextensions  = "*.h *.hpp"
+sources.fileextensions  = "*.cpp *.qml *.qdoc"
+outputdir = html
+imagedirs = images
+headerdirs  = . .. ../src
+sourcedirs  = . \
+		./src \
+		.. \
+		../src
+		
+
+moduleheader = FortiyMainApplicationDoc
+navigation.homepage  = Fortify-index.html
+navigation.hometitle = "Fortify-TheAppLocker"
+navigation.cppclassespage = "Fortify Main Application"

@@ -4,10 +4,31 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+/*!
+   \class FavouriteListModel
+   \brief The FavouriteListModel class is a list model class to provide data in qml.
+   \inmodule FortiyMainApplication
+
+   The FavouriteListModel class provides interfaces to provide data to qml ListView.
+*/
+
+/*!
+    \enum FavouriteListModel::FavouriteListRoles
+
+    \value NameRole
+           Name of the favourite.
+    \value IconRole
+           Icon of the favourite.
+*/
+
+/*!
+ * \brief FavouriteListModel::FavouriteListModel reads the app settings and updates the favourite list when app starts.
+ */
 FavouriteListModel::FavouriteListModel() {
     ReadFavouriteListFromSettings();
 }
 
+/*! \reimp */
 QVariant FavouriteListModel::data(const QModelIndex& index, int role) const {
     if (index.row() < 0 || index.row() >= (int)m_favourite_list.size()) {
         return QVariant();
@@ -26,10 +47,12 @@ QVariant FavouriteListModel::data(const QModelIndex& index, int role) const {
     return QVariant();
 }
 
+/*! \reimp */
 int FavouriteListModel::rowCount(const QModelIndex&) const {
     return m_favourite_list.size();
 }
 
+/*! \reimp */
 QHash<int, QByteArray> FavouriteListModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[NameRole] = "nameRole";
@@ -37,12 +60,20 @@ QHash<int, QByteArray> FavouriteListModel::roleNames() const {
     return roles;
 }
 
+/*!
+   \fn void FavouriteListModel::PopulateFavouriteList(const std::vector<FavouriteInfo>& favourite_info_list)
+   \brief The PopulateFavouriteList(\a favourite_info_list) function copies the favourite info list and resets the model.
+*/
 void FavouriteListModel::PopulateFavouriteList(const std::vector<FavouriteInfo>& favourite_info_list) {
     beginResetModel();
     m_favourite_list = favourite_info_list;
     endResetModel();
 }
 
+/*!
+   \fn void FavouriteListModel::AddFavourite(const FavouriteInfo& favourite_info)
+   \brief The AddFavourite(\a favourite_info) function inserts favourite info element in the list, updates the view and save in the app settings.
+*/
 void FavouriteListModel::AddFavourite(const FavouriteInfo& favourite_info) {
     beginInsertRows(QModelIndex(), m_favourite_list.size(), m_favourite_list.size());
     m_favourite_list.push_back(favourite_info);
@@ -50,6 +81,10 @@ void FavouriteListModel::AddFavourite(const FavouriteInfo& favourite_info) {
     SaveFavouriteListInSettings();
 }
 
+/*!
+   \fn void FavouriteListModel::RemoveFavourite(const int index)
+   \brief The RemoveFavourite(\a index) function removes favourite info element from the list, updates the view and save in the app settings.
+*/
 void FavouriteListModel::RemoveFavourite(const int index) {
     if (index < 0 || index >= (int)m_favourite_list.size()) {
         return;
@@ -60,6 +95,10 @@ void FavouriteListModel::RemoveFavourite(const int index) {
     SaveFavouriteListInSettings();
 }
 
+/*!
+   \fn void FavouriteListModel::updateUnlockedAppsList(const std::vector<std::string>& unlocked_apps_list, const int index)
+   \brief The updateUnlockedAppsList(\a unlocked_apps_list, \a index) function copies the unlocked apps list names and save in the app settings.
+*/
 void FavouriteListModel::updateUnlockedAppsList(const std::vector<std::string>& unlocked_apps_list, const int index) {
     if (index < 0 || index >= (int)m_favourite_list.size()) {
         return;
@@ -68,6 +107,10 @@ void FavouriteListModel::updateUnlockedAppsList(const std::vector<std::string>& 
     SaveFavouriteListInSettings();
 }
 
+/*!
+   \fn std::vector<std::string> FavouriteListModel::GetUnlockedAppsListByIndex(const int index)
+   \brief The GetUnlockedAppsListByIndex(\a index) function returns the unlocked apps list names by index from the list.
+*/
 std::vector<std::string> FavouriteListModel::GetUnlockedAppsListByIndex(const int index) {
     if (index < 0 || index >= (int)m_favourite_list.size()) {
         return std::vector<std::string>();

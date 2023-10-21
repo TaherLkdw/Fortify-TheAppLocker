@@ -13,6 +13,7 @@ class AppLockerManager;
 
 class AppLockerUIManager : public QObject {
     Q_OBJECT
+
     Q_PROPERTY(AppsListModel* appsListModel READ appsListModel NOTIFY appsListModelChanged);
     Q_PROPERTY(FavouriteListModel* favouriteListModel READ favouriteListModel NOTIFY favouriteListModelChanged);
     Q_PROPERTY(QString installedAppIconsDirPath READ installedAppIconsDirPath NOTIFY installedAppIconsDirPathChanged);

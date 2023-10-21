@@ -39,7 +39,7 @@ App {
 
         TopBar {
             id: top_bar
-            header_text: qsTr("AppLocker")
+            header_text: qsTr("Fortify-TheAppLocker")
             back_button_visible: false
             anchors.topMargin: dp(28)
         }

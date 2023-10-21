@@ -1,0 +1,22 @@
+/*!
+   \class FavouriteInfo
+   \brief The FavouriteInfo class is a data structure class to provide information regarding the favourites.
+   \inmodule FortiyMainApplication
+
+   The FavouriteInfo class provides data and interfaces which can be used to store favourite information.
+*/
+
+/*!
+    \variable std::vector<std::string> FavouriteInfo::m_unlocked_apps_list
+    \brief The list of unlocked apps list.
+*/
+
+/*!
+    \variable FavouriteInfo::m_name
+    \brief The label name of the favourite.
+*/
+
+/*!
+    \variable FavouriteInfo::m_icon
+    \brief The icon path of the favourite.
+*/

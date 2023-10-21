@@ -1,0 +1,23 @@
+/*!
+   \module FortiyMainApplication
+   \title Fortify Main Application
+   \brief The Fortiy Main Application module contains implementation of UI and business logic.
+
+   The Fortify Main Application is an app locker which user can use to fortify the apps from opening,
+   while keeping only required apps enabled to be used. When user selects the app to be locked, the app
+   continuously monitors foreground app on device. When user tries to open the app which is locked,
+   Fortify puts that app in to background and shows home screen of the device.
+
+   This module contains UI in qml and business logic in cpp. Also contains platform level code like Android.
+*/
+
+
+/*!
+   \qmlmodule Qml-FortiyMainApplication
+   \title Qml Components
+
+   \brief The Qml-FortiyMainApplication module provides UI views and controls.
+
+   All the UI components are implemented using QtQuick controls. This page lists down the controls used in the App.
+   Check the documentation provided here to know more about the QtQuick.
+*/

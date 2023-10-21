@@ -1,6 +1,23 @@
 import QtQuick 2.12
 import "common"
 
+/*!
+    \qmltype InstalledAppsListView
+    \inqmlmodule Qml-FortiyMainApplication
+    \inherits Rectangle
+    \brief This class provides the ListView of the name of Favourites created by user.
+
+    This class can be instantiated as shown below:
+    \qml
+        FavouriteListView {
+            id: favouriteListView
+            anchors.top: top_bar.bottom
+            anchors.bottom: mainActionBar.top
+            visible: !app.apps_locked && !installedAppsListView.visible
+        }
+    \endqml
+*/
+
 Rectangle {
     id: root
     width: parent.width
