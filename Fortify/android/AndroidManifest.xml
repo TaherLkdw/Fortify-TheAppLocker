@@ -3,13 +3,13 @@
     <application android:allowNativeHeapPointerTagging="false" 
                  android:hardwareAccelerated="true" 
                  android:extractNativeLibs="true"
-                 android:name="com.felgo.helper.FelgoApplication" 
+                 android:name="com.felgo.helper.FelgoApplication"
                  android:label="@string/app_name" 
                  android:icon="@drawable/ic_launcher"
                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
-                  android:name="com.felgo.helper.FelgoActivity"
+                  android:name="com.lkdw.application.applocker.Fortify.MainActivity"
                   android:exported="true"
                   android:launchMode="singleTop"
                   android:label="@string/app_name"
@@ -23,7 +23,18 @@
             <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
             <meta-data android:name="android.app.arguments" android:value="-- %%INSERT_APP_ARGUMENTS%% --"/>
             <meta-data android:name="android.app.extract_android_style" android:value="minimal"/>
+            <meta-data android:name="android.app.background_running" android:value="true"/>
         </activity>
+        <service android:name="com.lkdw.application.applocker.Fortify.MyService"
+        android:enabled="true"
+        android:exported="true"
+        android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_RESTART"/>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_START"/>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_STOP"/>
+            </intent-filter>
+        </service>
 
         <!-- file provider needed for letting external apps (like camera) write to a file of the app -->
         <provider
@@ -39,7 +50,7 @@
 
 
     </application>
-    
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="33"/>
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
@@ -49,5 +60,12 @@
     <!-- The following comment will be replaced upon deployment with default features based on the dependencies of the application.
          Remove the comment if you do not require these default features. -->
     <!-- %%INSERT_FEATURES -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 </manifest>
