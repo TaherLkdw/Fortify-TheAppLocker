@@ -14,7 +14,7 @@ set(PRODUCT_VERSION_NAME "1.0.0")
 set(PRODUCT_VERSION_CODE 1)
 
 # Set either "test" or "publish" stage:
-set(PRODUCT_STAGE "test")
+set(PRODUCT_STAGE "publish")
 
 # Optionally set a license key that is used instead of the license key from
 # main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)
@@ -42,15 +42,15 @@ felgo_configure_executable(appFortify)
 
 # Deploy resources to build folder/package directly
 # comment for publishing
-deploy_resources("${QmlFiles};${AssetsFiles}")
+#deploy_resources("${QmlFiles};${AssetsFiles}")
 
 # Add QML files and resources to QML module to included them via QRC automatically:
 qt_add_qml_module(appFortify
     URI Fortify
     VERSION 1.0
 # uncomment for publishing:
-#    QML_FILES ${QmlFiles}
-#    RESOURCES ${AssetsFiles}
+    QML_FILES ${QmlFiles}
+    RESOURCES ${AssetsFiles}
     NO_RESOURCE_TARGET_PATH
 )
 

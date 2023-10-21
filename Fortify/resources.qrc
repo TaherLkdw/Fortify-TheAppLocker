@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets</file>
+        <file>qml/assets/back_icon.png</file>
+        <file>qml/assets/delete_icon.png</file>
+        <file>qml/assets/edit_icon.png</file>
+        <file>qml/common/InputField.qml</file>
+        <file>qml/common/TopBar.qml</file>
+        <file>qml/InstalledAppsListView.qml</file>
+        <file>qml/Main.qml</file>
+        <file>qml/FavouriteListView.qml</file>
+    </qresource>
+</RCC>
