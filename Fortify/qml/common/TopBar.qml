@@ -36,7 +36,7 @@ Rectangle {
         \qmlproperty int Topbar::font_size
         \brief This property is used to modify font size of the header text.
     */
-    property int font_size: sp(32)
+    property int font_size: sp(28)
 
     /*!
         \qmlproperty bool Topbar::bold

@@ -21,7 +21,7 @@ import "common"
 Rectangle {
     id: root
     width: parent.width
-    color: 'white'
+    color: app.background_color
 
     /*!
         \qmlproperty bool InstalledAppsListView::addingNewFavourite
@@ -89,21 +89,26 @@ Rectangle {
                 width: appsListView.cellWidth - dp(15)
                 height: appsListView.cellHeight - dp(15)
                 anchors.centerIn: parent
-                border.color: app.light_grey
-                border.width: dp(1)
+                border.color: app.title_bar_color
+                border.width: model.lockedRole ? dp(1) : 0
                 radius: width/12
                 color: "white"
 
-                Rectangle {
+                Item {
                     id: checkBox
-                    width: parent.width/6
+                    width: parent.width/4
                     height: width
                     anchors.horizontalCenter: parent.right
                     anchors.verticalCenter: parent.top
-                    color: model.lockedRole ? 'black' : 'white'
-                    border.width: dp(1)
-                    border.color: app.light_grey
-                    radius: width/8
+                    visible: model.lockedRole
+                    Image {
+                        id: lockIcon
+                        source: "qrc:/qml/assets/lock_icon.png"
+                        anchors.fill: parent
+                        clip: true
+                        mipmap: true
+                        fillMode: Image.PreserveAspectFit
+                    }
                 }
 
                 Image {
