@@ -1,5 +1,6 @@
 includepaths = . \
            .. \
+           ../.. \
            ./includes \
            $QT_INSTALL_HEADERS \
            $QT_INSTALL_HEADERS/QtCore \
@@ -12,7 +13,7 @@ indexes = $QT_INSTALL_DOCS/qtcore/qtcore.index \
             $QT_INSTALL_DOCS/qtquick/qtquick.index \
             $QT_INSTALL_DOCS/qtdoc/qtdoc.index
 
-include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+include($QT_INSTALL_DOCS/global/qt-module-defaults-online.qdocconf)
 include($QT_INSTALL_DOCS/config/exampleurl-qtbase.qdocconf)
 
 defines += qt6
@@ -24,7 +25,7 @@ depends += \
 
 project = Fortify-TheAppLocker
 version = $QT_VERSION
-
+url = http://doc.felgo.io/fortify
 qhp = true
 qhp.projects            = Fortify
 qhp.Fortify.file                = fortify.qhp
@@ -41,13 +42,13 @@ qhp.Fortify.subprojects.classes.sortPages = true
 
 headers.fileextensions  = "*.h *.hpp"
 sources.fileextensions  = "*.cpp *.qml *.qdoc"
-outputdir = html
+outputdir = ../../Docs/
 imagedirs = images
-headerdirs  = . .. ../src
+headerdirs  = . ../.. ../../src
 sourcedirs  = . \
 		./src \
-		.. \
-		../src
+                ../.. \
+                ../../src
 		
 
 moduleheader = FortiyMainApplicationDoc

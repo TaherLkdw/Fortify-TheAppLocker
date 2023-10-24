@@ -18,6 +18,15 @@
    It also instantiates class \b {AppsListModel} and \b {FavouriteListModel} to provide model in qml context.
 */
 
+/*!
+    Constructs an object with parent object \a parent.
+
+    The destructor of a parent object destroys all child objects.
+
+    Setting \a parent to \nullptr constructs an object with no parent. If the
+    object is a widget, it will become a top-level window.
+*/
+
 AppLockerUIManager::AppLockerUIManager(QObject* parent) : QObject(parent) {   
 }
 
@@ -63,6 +72,14 @@ AppLockerUIManager::~AppLockerUIManager() {
    \property AppLockerUIManager::appsListModel
    \brief Returns pointer of AppsListModel class.
 */
+/*!
+  \fn void AppLockerUIManager::appsListModelChanged()
+  \internal
+
+  While not useful from C++ due to how appsListModel is normally set once on
+  startup, this is still needed for QML so that bindings are reevaluated after
+  that initial change.
+*/
 AppsListModel* AppLockerUIManager::appsListModel() const {
     return m_apps_list_model.get();
 }
@@ -71,6 +88,14 @@ AppsListModel* AppLockerUIManager::appsListModel() const {
    \property AppLockerUIManager::favouriteListModel
    \brief Returns pointer of FavouriteListModel class.
 */
+/*!
+  \fn void AppLockerUIManager::favouriteListModel()
+  \internal
+
+  While not useful from C++ due to how favouriteListModel is normally set once on
+  startup, this is still needed for QML so that bindings are reevaluated after
+  that initial change.
+*/
 FavouriteListModel* AppLockerUIManager::favouriteListModel() const {
     return m_favourite_list_model.get();
 }
@@ -78,6 +103,14 @@ FavouriteListModel* AppLockerUIManager::favouriteListModel() const {
 /*!
    \property AppLockerUIManager::installedAppIconsDirPath
    \brief Returns directory path where application icons are saved.
+*/
+/*!
+  \fn void AppLockerUIManager::installedAppIconsDirPath()
+  \internal
+
+  While not useful from C++ due to how installedAppIconsDirPath is normally set once on
+  startup, this is still needed for QML so that bindings are reevaluated after
+  that initial change.
 */
 QString AppLockerUIManager::installedAppIconsDirPath() const {
     return m_installed_app_icons_dir_path;
