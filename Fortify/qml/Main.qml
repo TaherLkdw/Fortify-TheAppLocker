@@ -15,6 +15,7 @@ App {
     width: 380
     height: 640
 
+    property string background_color: "#bdcdd1"
     property string button_color: "#47D7D7"
     property string title_bar_color: "#10272E"
     property string text_color: "#3C4047"
@@ -39,14 +40,14 @@ App {
 
         TopBar {
             id: top_bar
-            header_text: qsTr("AppLocker")
+            header_text: qsTr("Fortify-TheAppLocker")
             back_button_visible: false
             anchors.topMargin: dp(28)
         }
 
         Rectangle {
             id: stopAppLockBackground
-            color: 'white'
+            color: app.background_color
             anchors.top: top_bar.bottom
             anchors.bottom: mainActionBar.bottom
             width: parent.width
@@ -101,7 +102,7 @@ App {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: dp(28)
             visible: !app.apps_locked && !installedAppsListView.visible
-            color: 'white'
+            color: app.background_color
 
             Rectangle {
                 id: addFavouriteButton

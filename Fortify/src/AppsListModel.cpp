@@ -2,6 +2,24 @@
 
 #include <QDebug>
 
+/*!
+   \class AppsListModel
+   \brief The AppsListModel class is list model class to provide data in qml.
+   \inmodule FortiyMainApplication
+
+   The AppsListModel class provides interfaces to provide data to qml GridView.
+*/
+
+/*!
+    \enum AppsListModel::AppsListRoles
+
+    \value PackageNameRole Name of the application package.
+    \value LabelRole Label of the application.
+    \value IconRole Icon of the application.
+    \value LockedRole Is application locked.
+*/
+
+/*! \reimp */
 QVariant AppsListModel::data(const QModelIndex& index, int role) const {
     if (index.row() < 0 || index.row() >= (int)m_apps_list.size()) {
         return QVariant();
@@ -26,10 +44,13 @@ QVariant AppsListModel::data(const QModelIndex& index, int role) const {
     return QVariant();
 }
 
-int AppsListModel::rowCount(const QModelIndex &) const {
+/*! \reimp */
+int AppsListModel::rowCount(const QModelIndex &parent) const {
+    Q_UNUSED(parent)
     return m_apps_list.size();
 }
 
+/*! \reimp */
 QHash<int, QByteArray> AppsListModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[PackageNameRole] = "packageNameRole";
@@ -39,6 +60,10 @@ QHash<int, QByteArray> AppsListModel::roleNames() const {
     return roles;
 }
 
+/*!
+   \fn void AppsListModel::PopuplateInstalledApps(const std::vector<AppInfo>& installed_apps)
+   \brief The PopuplateInstalledApps(\a installed_apps) function copies the installed apps list and resets the model.
+*/
 void AppsListModel::PopuplateInstalledApps(const std::vector<AppInfo>& installed_apps) {
     qDebug() << TAG << __func__ << " installed_apps: " << installed_apps.size();
     beginResetModel();
@@ -46,25 +71,10 @@ void AppsListModel::PopuplateInstalledApps(const std::vector<AppInfo>& installed
     endResetModel();
 }
 
-//void AppsListModel::RePopuplateAppsList(QMap<std::string, AppInfo> installed_apps) {
-//    qDebug() << TAG << __func__ << " installed_apps: " << installed_apps.size() << " m_apps_list: " << m_apps_list.size();
-//    //To-Do: Need to test this logic.
-//    beginResetModel();
-//    m_unrestricted_apps_list.clear();
-//    for (const auto& appInfo : m_apps_list) {
-//        if (!installed_apps.contains(appInfo.m_package_name)) {
-//          m_apps_list.remove(appInfo.m_package_name);
-//        }
-//        installed_apps.remove(appInfo.m_package_name);
-//    }
-//    if (installed_apps.size() > 0) {
-//        for (const auto& appInfo : installed_apps) {
-//            m_apps_list[appInfo.m_package_name] = appInfo;
-//        }
-//    }
-//    endResetModel();
-//}
-
+/*!
+   \fn void AppsListModel::toggleAppLock(const int index)
+   \brief The toggleAppLock(\a index) function toggles the m_locked variable of the class AppInfo from the list by index.
+*/
 void AppsListModel::toggleAppLock(const int index) {
     if (index < 0 || index >= (int)m_apps_list.size()) {
         qWarning() << TAG << __func__ << " Index out of bound: " << index;
@@ -75,6 +85,10 @@ void AppsListModel::toggleAppLock(const int index) {
     emit dataChanged(createIndex(index, 0), createIndex(index, 0), QVector<int>() << AppsListRoles::LockedRole);
 }
 
+/*!
+    \fn std::vector<AppInfo> AppsListModel::GetInstalledAppsList() const
+    \brief The GetInstalledAppsList() function returns the apps list.
+*/
 std::vector<AppInfo> AppsListModel::GetInstalledAppsList() const {
     return m_apps_list;
 }

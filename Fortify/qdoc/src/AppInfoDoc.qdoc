@@ -1,0 +1,27 @@
+/*!
+   \class AppInfo
+   \brief The AppInfo class is a data structure class to provide information regarding installed applications.
+   \inmodule FortiyMainApplication
+
+   The AppInfo class provides data and interfaces which can be used to store installed application information.
+*/
+
+/*!
+    \variable AppInfo::m_package_name
+    \brief The package name of the installed application.
+*/
+
+/*!
+    \variable AppInfo::m_label
+    \brief The label name of the installed application.
+*/
+
+/*!
+    \variable AppInfo::m_icon
+    \brief The icon path of the installed application.
+*/
+
+/*!
+    \variable AppInfo::m_locked
+    \brief Returns \c true or \c false if application is locked.
+*/

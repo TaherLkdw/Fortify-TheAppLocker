@@ -1,0 +1,8 @@
+#include "../../src/android_files/AppLockerAndroid.hpp"
+#include "../../src/AppInfo.hpp"
+#include "../../src/AppLockerManager.hpp"
+#include "../../src/AppLockerUIManager.hpp"
+#include "../../src/AppSettings.hpp"
+#include "../../src/AppsListModel.hpp"
+#include "../../src/FavouriteInfo.hpp"
+#include "../../src/FavouriteListModel.hpp"

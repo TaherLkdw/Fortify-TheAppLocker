@@ -9,11 +9,9 @@
 class AppSettings {
     Q_GADGET
 public :
-
-    enum class Key {
+    enum Key {
         FavouriteInfo
     };
-
     ~AppSettings() = default;
 
     // Note: This is used only for test cases
@@ -38,11 +36,11 @@ public :
     static void Remove(const Key key);
     static void Write(const Key key, const std::string &value);
 
-   static std::string GetString(const Key key);
+    static std::string GetString(const Key key);
 
 private:
     AppSettings() {
-        m_app_settings = std::make_shared<QSettings>(QStringLiteral("Lkdw Card game"), QStringLiteral("3 Of Spades"));
+        m_app_settings = std::make_shared<QSettings>(QStringLiteral("Lkdw App Locker"), QStringLiteral("Fortify-TheAppLocker"));
     }
 
     // Note: This is used only for test cases

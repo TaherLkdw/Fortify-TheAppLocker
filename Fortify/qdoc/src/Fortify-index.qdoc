@@ -1,0 +1,654 @@
+/*!
+    \page Fortify-index.html
+    \title Fortify-TheAppLocker
+
+    \brief Fortify - The App Locker is an app locker which user can use to fortify the apps from opening,
+    while keeping only required apps enabled to be used.
+
+
+    \section1 Description
+
+    The Fortify - The App Locker provides below functionalities
+
+    \list
+    \li A quick way to protect your apps from opening by locking the apps.
+    \li Save the list of apps needed to be locked as favourites.
+    \endlist
+
+    The Fortify - The App Locker Application is an app locker which user can use to fortify the apps from opening,
+    while keeping only required apps enabled to be used. When user selects the app to be locked, the app
+    continuously monitors foreground app on device. When user tries to open the app which is locked,
+    Fortify puts that app in to background and shows home screen of the device.
+
+    This removes the hassel of entering passwords again and agian like other normal app locker apps.
+    Here in one shot user locks the whole device by keeping the selective few apps unlocked.
+    Depending on the preference, user can save the favourites also, favourite apps to remain unlock.
+    For example, at home user wants to lock all the office related apps, or at the office user wants to
+    lock all the social media apps. Then once favourites Home and Office are created, user can enable/disable
+    just by one tap on the favourite.
+
+    See the tutorial \l{How to make Fortify-TheAppLocker Application} for step by step guide on how to create this app.
+
+    \table
+    \row
+        \li \image app-screen-1.png
+        \li \image app-screen-2.png
+    \row
+        \li \image app-screen-3.png
+        \li \image app-screen-4.png
+    \endtable
+
+    \endsection1
+
+
+    \section1 Used Felgo features
+        \list
+            \li \l{https://felgo.com/doc/felgo-app/} {App}: The top-level component of a Felgo application containing all other components.
+            \li \l{https://felgo.com/doc/felgo-apptextinput/}{AppTextInput}: A single-line TextInput with a given placeholder text (deprecated).
+        \endlist
+    \endsection1
+
+    \section1 Implementation
+    The page \l{Fortify Main Application} page provide more information about applications c++ implementation and
+    the page \l{Qml-FortiyMainApplication} provides information regarding the qml implementation.
+    \endsection1
+
+    \section1 Files
+    \section2 Cpp:
+    \list
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/main.cpp}{main.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/android_files/AppLockerAndroid.cpp}{src/android_files/AppLockerAndroid.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/android_files/AppLockerAndroid.hpp}{src/android_files/AppLockerAndroid.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppInfo.hpp}{src/AppInfo.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.cpp}{src/AppLockerManager.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/AppLockerManager.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.cpp}{src/AppLockerUIManager.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/AppLockerUIManager.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.cpp}{src/AppSettings.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/AppSettings.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.cpp}{src/AppsListModel.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/AppsListModel.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/FavouriteInfo.hpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.cpp}{src/FavouriteListModel.cpp}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/src/AppLockerManager.hpp}{src/FavouriteListModel.hpp}
+    \endlist
+    \endsection2
+
+    \section2 Qml:
+    \list
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/common/InputField.qml}{qml/common/InputField.qml}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/common/TopBar.qml}{qml/common/TopBar.qml}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/FavouriteListView.qml}{qml/FavouriteListView.qml}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/InstalledAppsListView.qml}{qml/InstalledAppsListView.qml}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/Main.qml}{qml/Main.qml}
+    \endlist
+    \endsection2
+
+    \section2 Java:
+    \list
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MainActivity.java}{android/src/com/lkdw/application/applocker/Fortify/MainActivity.java}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MyService.java}{android/src/com/lkdw/application/applocker/Fortify/MyService.java}
+    \endlist
+    \endsection2
+
+    \section2 Images:
+    \list
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/assets/back_icon.png}{qml/assets/back_icon.png}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/assets/delete_icon.png}{qml/assets/delete_icon.png}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/assets/edit_icon.png}{qml/assets/edit_icon.png}
+        \li \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/qml/assets/lock_icon.png}{qml/assets/lock_icon.png}
+    \endlist
+    \endsection2
+    \endsection1
+*/
+
+/*!
+    \page how-to-make-the-app.html
+    \title How to make Fortify-TheAppLocker Application
+
+    \brief Tutorial on how to create the app.
+
+    \section1 Introduction
+    In this tutorial I will strip up basic things like creating screens and implementing cpp business logic to interact with java.
+    This is an in-depth explanation of how to create the mechanics of the Fortify-TheAppLocker app with Felgo.
+    It features sprite GridView, ListView, multiple devices & aspect ratios support, textinput and property bindings, interact with java files using JNI.
+
+    We also provide the full source code of Fortify-TheAppLocker made with Felgo on \l {https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master} {GitHub}
+    \endsection1
+
+    \section1 Project Template
+    Clone/download project to your preferred destination and then open it with Qt Creator.
+    Let me first quickly show you the project structure:
+    All the .hpp and .cpp files are inside the folder /src. All the .qml files and images used by qml are under /qml and /qml/assets folder respectively.
+
+    The java files are inside the folder /android/src/com/lkdw/application/applocker/Fortify folder.
+
+    To create a project from scratch, first go to Felgo Qt creator and create a new sample app project.
+    This will create all the necessary files for all the platforms. Now on top of the existing project structur add new files and code according to your need.
+
+    \endsection1
+
+    \section1 Installed Apps List View
+    Use the project tree to navigate to QML, this is where all the qml files are. Now create a new InstalledAppsListView qml file with the following content:
+
+    \qml
+        Rectangle {
+            property bool addingNewFavourite: false
+            property bool updatingFavourite: false
+            property string favouriteName: favouriteNameInputField.placeHolderText
+            TopBar {
+                header_text: addingNewFavourite ? qsTr("Add New Favourite") : (updatingFavourite ? qsTr("Updating Favourite") : qsTr("Quick Lock"))
+                ...
+            }
+
+            InputField {
+                ...
+            }
+
+            GridView {
+                id: appsListView
+                model: app_locker_ui_manager.appsListModel
+                ...
+
+                delegate: Item {
+                    id: appDelegateContainer
+                    width: appsListView.cellWidth
+                    height: appsListView.cellHeight
+
+                    Rectangle {
+                        id: appDelegate
+                        ...
+
+                        Rectangle {
+                            id: checkBox
+                            ...
+                        }
+
+                        Image {
+                            id: icon
+                            source: "file://" + app_locker_ui_manager.installedAppIconsDirPath + model.labelRole + ".png"
+                            ...
+                        }
+
+                        Text {
+                            id: appName
+                            text: model.labelRole
+                            ...
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                               app_locker_ui_manager.toggleAppLock(index)
+                            }
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: quickLockButton
+                text: addingNewFavourite ? qsTr("Add New Favourite") : (updatingFavourite ? qsTr("Update Favourite") : qsTr("Lock Apps"))
+                ...
+            }
+        }
+    \endqml
+
+    Here the \l{TopBar}, \l{InputField}, GridView and the lock buttons are added in the view.
+    Above copde showcases how to use the common components and implement the GridView. How the delegates are arranged in the view etc.
+    As seen from the code above the model is implemented in cpp which is \l{AppsListModel} and data is fetched using model roles.
+    On the click of the delegate cpp method of class \l{AppLockerUIManager} is called which shows how cpp and qml interaction is happening.
+
+    \endsection1
+
+    \section1 Favourites List View
+    After creating the GridView of applications, lets create a ListView of favourites. Create a new FavouriteListView qml file with the following content:
+
+    \qml
+    Rectangle {
+        id: root
+        ...
+
+        TopBar {
+            id: favourite_top_bar
+            back_button_visible: false
+            ...
+        }
+
+        //Show the message when there are no favourites added.
+        Rectangle {
+            id: noFavouriteBackground
+            ...
+            Text {
+                id: noFavouriteText
+                text: qsTr("No favourites added, please create favourites")
+                ...
+            }
+        }
+
+        ListView {
+            id: favouriteListView
+            model: app_locker_ui_manager.favouriteListModel
+            ...
+
+            delegate: Item {
+                id: favouriteDelegateContainer
+
+                Rectangle {
+                    id: favouriteDelegate
+                    ...
+
+                    Item {
+                        id: editButtonContainer
+                        ...
+                        Image {
+                            id: editButton
+                            source: "qrc:/qml/assets/edit_icon.png"
+                            ...
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                app_locker_ui_manager.updateFavouriteAppsView(index)
+                            }
+                        }
+                    }
+
+                    Item {
+                        id: deleteButton
+                        ...
+                        Image {
+                            id: deleteIcon
+                            source: "qrc:/qml/assets/delete_icon.png"
+                            ...
+
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                app_locker_ui_manager.removeFavourite(index)
+                            }
+                        }
+                    }
+
+
+                    Text {
+                        id: favouriteName
+                        text: model.nameRole
+                        ...
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                app_locker_ui_manager.lockFavourite(index)
+                                app.apps_locked = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    \endqml
+
+    The above code shows the implementation of how the favourite list view is arranged.
+    The edit and delete buttons are added inside delegates. The model is implemented in cpp which is FavouriteListModel.
+    \endsection1
+
+    \section1 Main qml
+
+    In main qml file finally instantiate above mentioned qml types we created.
+
+    \qml
+    App {
+        licenseKey: "..."
+        id: app
+
+        property bool apps_locked: false
+        ...
+
+        Connections {
+            target: app_locker_ui_manager
+            onFavouriteViewUpdated: {
+                installedAppsListView.updatingFavourite = true
+                installedAppsListView.visible = true
+            }
+        }
+
+        Rectangle {
+            id: root
+            ...
+            TopBar {
+                id: top_bar
+                header_text: qsTr("Fortify-TheAppLocker")
+                back_button_visible: false
+                ...
+            }
+            Rectangle {
+                id: stopAppLockBackground
+                visible: app.apps_locked
+                ...
+                Rectangle {
+                    id: stopAppLockFavouriteButton
+                    ...
+
+                    Text {
+                        id: stopAppLockFavouriteText
+                        text: qsTr("Stop app lock")
+                        ...
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app.apps_locked = false
+                            app_locker_ui_manager.unlockApps()
+                        }
+                    }
+                }
+            }
+
+            FavouriteListView {
+                id: favouriteListView
+                visible: !app.apps_locked && !installedAppsListView.visible
+                ...
+            }
+
+            InstalledAppsListView {
+                id: installedAppsListView
+                visible: false
+                ...
+            }
+
+            Rectangle {
+                id: mainActionBar
+                visible: !app.apps_locked && !installedAppsListView.visible
+                ...
+
+                Rectangle {
+                    id: addFavouriteButton
+                    ...
+
+                    Text {
+                        id: addFavouriteText
+                        text: qsTr("Add New Favourite")
+                        ...
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app_locker_ui_manager.updateQuickLockView()
+                            installedAppsListView.addingNewFavourite = true
+                            installedAppsListView.visible = true
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: quickLockButton
+                    ...
+
+                    Text {
+                        id: quickLockText
+                        text: qsTr("Quick lock")
+                        ...
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app_locker_ui_manager.updateQuickLockView()
+                            installedAppsListView.addingNewFavourite = false
+                            installedAppsListView.visible = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+    \endqml
+
+    Here the code showcases how both the views we created are instantiated and controlled by the button press events.
+    Notice the \l {https://felgo.com/doc/felgo-app}{App} component as the root component of the main qml.
+    It is a top-level component of a Felgo application containing all other components.
+
+    \note Add all the images and qml assests in resource.qrc files to bundle it inside app while publishing.
+
+    \endsection1
+
+    \section1 AppLockerUIManager
+    As mentioned earlier we have the business logic in cpp, we need to imlement one UI manager interface class to interact with qml and cpp.
+    Create a class AppLockerUIManager which inherits QObject class as shown below:
+
+    \code
+        class AppLockerUIManager : public QObject {
+            Q_OBJECT
+
+            Q_PROPERTY(AppsListModel* appsListModel READ appsListModel NOTIFY appsListModelChanged);
+            Q_PROPERTY(FavouriteListModel* favouriteListModel READ favouriteListModel NOTIFY favouriteListModelChanged);
+            Q_PROPERTY(QString installedAppIconsDirPath READ installedAppIconsDirPath NOTIFY installedAppIconsDirPathChanged);
+
+        public:
+            AppLockerUIManager(QObject* parent = nullptr);
+            ~AppLockerUIManager();
+
+            void Init();
+
+            Q_INVOKABLE void updateQuickLockView();
+            ...
+        };
+    \endcode
+
+    Here the code showcaseshow to declare Q_PROPERTY and Q_INVOKABLE macros. Please check AppLockerUIManager class documentation for more reference.
+
+    \endsection1
+
+    \section1 List Models.
+    After implementing the UI manager, its time for to implement the list models for installed apps list and favourite list view.
+    List model classes inherits QAbstractListModel class to reuse its pure virtual functions.
+    Below code showcases the snippet of code of FavouriteListModel class:
+
+    \code
+        class FavouriteListModel : public QAbstractListModel {
+            Q_OBJECT
+
+            enum FavouriteListRoles {
+                NameRole = Qt::UserRole,
+                IconRole
+            };
+            public:
+                ...
+
+            protected:
+                QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+
+                int rowCount(const QModelIndex&) const override;
+
+                QHash<int, QByteArray> roleNames() const override;
+        };
+
+    \endcode
+
+    Here three overriden methods are reimplemented to provide data in ListView in qml at runtime. Same is applicable for AppsListModel class as well.
+    \endsection1
+
+
+
+
+    \section1 Platform Level code
+    The app locker needs to continuously monitor which app is currently running on foreground and if that app is locked or not.
+    To do that we need to implement a Java service which runs in background to monitor.
+
+    \code
+    public class MyService extends Service {
+        Timer mTimer = null;
+        static ArrayList<String> mLockAppsList = null;
+        @Override
+        public void onTaskRemoved(Intent rootIntent) {
+            //Restart service
+            ...
+        }
+
+        @Override
+        public int onStartCommand(Intent intent, int flags, int startId) {
+            String action = intent.getAction();
+            switch (action) {
+                case ACTION_START: {
+                    StartForegroundService(action);
+                    mLockAppsList = intent.getStringArrayListExtra("LockApps");
+                    break;
+                }
+                case ACTION_STOP: {
+                    mLockAppsList = null;
+                    if (mTimer != null) {
+                        mTimer.cancel();
+                    }
+                    stopForeground(true);
+                    break;
+                }
+                case ACTION_RESTART: {
+                    StartForegroundService(action);
+                    break;
+                }
+            }
+
+            return START_STICKY;
+        }
+    }
+    \endcode
+
+    Here the service is implemented to run in background, and when service starts main acitivty sends the locked apps list to service.
+    onStartCommand will start timer on ACTION_START command and copy the locked apps list. Also it will stop the timer on ACTION_STOP command.
+    This service will monitor the foreground app and if user opens the app which is locked this service will launch homescreen to put the app in background.
+    \code
+        private void launcHomeScreen() {
+            Intent startHomescreen = new Intent();
+            startHomescreen.setAction(Intent.ACTION_MAIN);
+            startHomescreen.addCategory(Intent.CATEGORY_HOME);
+            startHomescreen.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(startHomescreen);
+        }
+    \endcode
+
+    NOTE:- To run the service in background we need to show notification on the device. Please refer the implementation of the service here:
+    \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MyService.java}{MyService.java}
+
+    To enable the background service in android we need to add the below code in AndroidManifest.xml file:
+    \code
+        ...
+        <service android:name="com.lkdw.application.applocker.Fortify.MyService"
+        android:enabled="true"
+        android:exported="true"
+        android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_RESTART"/>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_START"/>
+                <action android:name="com.lkdw.application.applocker.Fortify.MyService.ACTION_STOP"/>
+            </intent-filter>
+        </service>
+        ...
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    \endcode
+
+    To run the service we need to implement the java activity. Create a java class MainActivity which extends FelgoActivity as shown below:
+    \code
+        public class MainActivity extends FelgoActivity {
+            ...
+
+            public Map<String, String> GetInstalledApps() {
+                if (mInstalledApps != null) {
+                    mInstalledApps.clear();
+                }
+                mInstalledApps = new HashMap<String, String>();
+                PackageManager packageManager = getPackageManager();
+
+                List<PackageInfo> packs = packageManager.getInstalledPackages(0);
+                for (int i = 0; i < packs.size(); i++) {
+                    PackageInfo p = packs.get(i);
+                    ApplicationInfo a = p.applicationInfo;
+                    // skip system apps if they shall not be included
+                    if (((a.flags & ApplicationInfo.FLAG_SYSTEM) == 1 || (a.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) == 128)
+                            && packageManager.getLaunchIntentForPackage(p.packageName) == null) {
+                        continue;
+                    }
+                    SaveAppIcon(a);
+                    mInstalledApps.put(p.packageName, packageManager.getApplicationLabel(a).toString());
+                }
+                return mInstalledApps;
+            }
+            ...
+        }
+    \endcode
+    MainActivity is responsible to get the installed apps info from device. It saves the names and icons of the apps to show it on the UI.
+
+    Now we can call the service and pass the locked apps list from the android main activity as below:
+    \code
+        public void LockApps(final String[] appsList) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ArrayList<String> list = new ArrayList<String>(Arrays.asList(appsList));
+                    mServiceIntent = new Intent(getApplicationContext(), MyService.class);
+                    mServiceIntent.setAction(MyService.ACTION_START);
+                    mServiceIntent.putStringArrayListExtra("LockApps", list);
+                    if (CheckOverlayPermission()) {
+                        startForegroundService(mServiceIntent);
+                    }
+                }
+            });
+        }
+    \endcode
+
+    Add below line in AndroidManifest.xml file after implementing the activity:
+    \code
+        android:name="com.felgo.helper.FelgoApplication"
+    \endcode
+    For the complete implementation please refer the file:
+    \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MainActivity.java}{MainActivity.java}
+    \endsection1
+
+    \section1 Interact with Java activity from cpp
+
+    Now to interact with java classes we need one cpp class which will handle communication between java and cpp. Implement the class AppLockerAndroid.
+    Java activity can be accessed from this cpp class as shown below:
+
+    \code
+        QJniObject activity = QNativeInterface::QAndroidApplication::context();
+        activity.callMethod<void>("LockApps", "([Ljava/lang/String;)V", object_array);
+    \endcode
+
+    Above code showcases how to get the context of the java activity to call the java method.
+    To enable these JNI functionality, header files which needed to be include are listed below:
+    \code
+        #include <QJniObject>
+        #include <QJniEnvironment>
+        #include <QtCore/private/qandroidextras_p.h>
+    \endcode
+
+    \endsection1
+
+    Now the all the components are in place lets go ahead and build the app for android platform.
+
+    \section1 Issues
+        \section2 Application issues
+            In the software development world there are no perfect software exists, so true is for this app also.
+            Below are the issues or improvement needed for future:
+            \list
+                \li App is supporting only android devices. Need implementation for ios as well, with help help of Felgo's cross platform compatibility UI part can remain same for both.
+                \li Need to add password lock for Fortify app when user has locked the apps and opening the fortify app.
+                \li setExcludeFromRecentApps is not working in some android devices, which allows app to stay hidden from the recent apps tab.
+                \li API documentation usin QDoc has issues while documenting Q_PROPERTY for AppLockerUIManager class, it is not able to find the property in header.
+                \li Also there is a same error for enums in cpp classes, it is not able to find the enum in header.
+            \endlist
+        \endsection2
+    \endsection1
+
+    \section1 Where to go from here
+    Application development is a continous agile journey. There are many things we can add improve in this app.
+    First priority would be to solve the existing issues and then probably add new features.
+    Apart from above listed issues if anything new is found please add it here in the repo: \l{https://github.com/TaherLkdw/Fortify-TheAppLocker/issues}{Issues}
+
+    \endsection1
+
+*/

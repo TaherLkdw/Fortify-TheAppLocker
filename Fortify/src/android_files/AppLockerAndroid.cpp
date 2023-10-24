@@ -1,15 +1,26 @@
 #include "AppLockerAndroid.hpp"
 
-//#include <QtAndroid>
-//#include <QtAndroidExtras>
 #include <QDebug>
 #include <QJniObject>
 #include <QJniEnvironment>
 #include <QtCore/private/qandroidextras_p.h>
 
+/*!
+   \class AppLockerAndroid
+   \brief The AppLockerAndroid class handles platform level implementation.
+   \inmodule FortiyMainApplication
+
+   The AppLockerAndroid class provide interfaces to interact with android activity using JNI.
+
+*/
+
 AppLockerAndroid::AppLockerAndroid() {
 }
 
+/*!
+   \fn std::map<std::string, std::string> AppLockerAndroid::GetInstalledApps()
+   \brief The GetInstalledApps() function fetches the installed apps list from android activity using JNI.
+*/
 //To-Do: Need to optimise this function.
 std::map<std::string, std::string> AppLockerAndroid::GetInstalledApps() {
     std::map<std::string, std::string> installed_apps;
@@ -95,6 +106,10 @@ std::map<std::string, std::string> AppLockerAndroid::GetInstalledApps() {
     return installed_apps;
 }
 
+/*!
+   \fn void AppLockerAndroid::LockApps(const std::vector<std::string>& apps_list)
+   \brief The LockApps(\a apps_list) function function passes the locked apps list to android activity.
+*/
 void AppLockerAndroid::LockApps(const std::vector<std::string>& apps_list) {
     jobjectArray object_array = 0;
     QJniEnvironment env;
@@ -109,11 +124,19 @@ void AppLockerAndroid::LockApps(const std::vector<std::string>& apps_list) {
     activity.callMethod<void>("LockApps", "([Ljava/lang/String;)V", object_array);
 }
 
+/*!
+   \fn void AppLockerAndroid::UnlockApps()
+   \brief The UnlockApps() function calls the interface of android activity to unlock apps.
+*/
 void AppLockerAndroid::UnlockApps() {
      QJniObject activity = QNativeInterface::QAndroidApplication::context();
      activity.callMethod<void>("UnlockApps", "()V");
 }
 
+/*!
+   \fn void AppLockerAndroid::SetInstalledAppIconsDirectoryPath(const std::string& path)
+   \brief The SetInstalledAppIconsDirectoryPath(\a path) function sets the path in android activity to save app icons.
+*/
 void AppLockerAndroid::SetInstalledAppIconsDirectoryPath(const std::string& path) {
     QJniEnvironment env;
     jstring str = env->NewStringUTF(path.c_str());

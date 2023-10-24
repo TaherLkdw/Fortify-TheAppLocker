@@ -1,19 +1,45 @@
 import QtQuick 2.12
 import "common"
 
+/*!
+    \qmltype InstalledAppsListView
+    \inqmlmodule Qml-FortiyMainApplication
+    \inherits Rectangle
+    \brief This class provides the GridView of the installed apps on device.
+
+    The usage of this class is as shown below::
+    \qml
+        InstalledAppsListView {
+            id: installedAppsListView
+            anchors.top: top_bar.top
+            anchors.bottom: mainActionBar.bottom
+            visible: false
+        }
+    \endqml
+*/
+
 Rectangle {
     id: root
     width: parent.width
-    color: 'white'
+    color: app.background_color
 
+    /*!
+        \qmlproperty bool InstalledAppsListView::addingNewFavourite
+        \brief This property is used to inform InstalledAppsListView that user is adding a new favourite.
+    */
     property bool addingNewFavourite: false
-    property bool updatingFavourite: false
-    property string favouriteName: favouriteNameInputField.placeHolderText
 
-    function lockApps() {
-        app_locker_ui_manager.quickLockApps()
-        app.apps_locked = true
-    }
+    /*!
+        \qmlproperty bool InstalledAppsListView::updatingFavourite
+        \brief This property is used to inform InstalledAppsListView that user is updating an existing favourite.
+    */
+    property bool updatingFavourite: false
+
+    /*!
+        \qmlproperty string InstalledAppsListView::favouriteName
+        \brief This property is used to save the favourite name set by user.
+    */
+    property string favouriteName: favouriteNameInputField.placeHolderText
 
     TopBar {
         id: top_bar
@@ -63,21 +89,26 @@ Rectangle {
                 width: appsListView.cellWidth - dp(15)
                 height: appsListView.cellHeight - dp(15)
                 anchors.centerIn: parent
-                border.color: app.light_grey
-                border.width: dp(1)
+                border.color: app.title_bar_color
+                border.width: model.lockedRole ? dp(1) : 0
                 radius: width/12
                 color: "white"
 
-                Rectangle {
+                Item {
                     id: checkBox
-                    width: parent.width/6
+                    width: parent.width/4
                     height: width
                     anchors.horizontalCenter: parent.right
                     anchors.verticalCenter: parent.top
-                    color: model.lockedRole ? 'black' : 'white'
-                    border.width: dp(1)
-                    border.color: app.light_grey
-                    radius: width/8
+                    visible: model.lockedRole
+                    Image {
+                        id: lockIcon
+                        source: "qrc:/qml/assets/lock_icon.png"
+                        anchors.fill: parent
+                        clip: true
+                        mipmap: true
+                        fillMode: Image.PreserveAspectFit
+                    }
                 }
 
                 Image {
@@ -147,7 +178,8 @@ Rectangle {
                     updatingFavourite = false
                     app_locker_ui_manager.updateFavourite()
                 } else {
-                    lockApps()
+                    app_locker_ui_manager.quickLockApps()
+                    app.apps_locked = true
                 }
                 root.visible = false
             }
