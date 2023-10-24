@@ -22,7 +22,7 @@
 */
 
 /*!
- * \brief FavouriteListModel::FavouriteListModel reads the app settings and updates the favourite list when app starts.
+ * \brief Constructor reads the app settings and updates the favourite list when app starts.
  */
 FavouriteListModel::FavouriteListModel() {
     ReadFavouriteListFromSettings();
