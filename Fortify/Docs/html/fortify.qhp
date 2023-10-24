@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>org.qt-project.fortify.6.6.0</namespace>
+    <virtualFolder>fortify</virtualFolder>
+    <metaData name="version" value="6.6.0"/>
+    <filterSection>
+        <toc>
+            <section ref="fortify-index.html" title="Fortify-TheAppLocker">
+                <section ref="fortiymainapplication-module.html" title="C++ Classes">
+                    <section ref="appinfo.html" title="AppInfo Class Reference">
+                        <section ref="appinfo-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="applockerandroid.html" title="AppLockerAndroid Class Reference">
+                        <section ref="applockerandroid-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="applockermanager.html" title="AppLockerManager Class Reference">
+                        <section ref="applockermanager-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="applockeruimanager.html" title="AppLockerUIManager Class Reference">
+                        <section ref="applockeruimanager-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="appsettings.html" title="AppSettings Class Reference">
+                        <section ref="appsettings-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="appslistmodel.html" title="AppsListModel Class Reference">
+                        <section ref="appslistmodel-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="favouriteinfo.html" title="FavouriteInfo Class Reference">
+                        <section ref="favouriteinfo-members.html" title="List of all members"/>
+                    </section>
+                    <section ref="favouritelistmodel.html" title="FavouriteListModel Class Reference">
+                        <section ref="favouritelistmodel-members.html" title="List of all members"/>
+                    </section>
+                </section>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="AddFavourite" id="FavouriteListModel::AddFavourite" ref="favouritelistmodel.html#AddFavourite"/>
+            <keyword name="AppInfo" id="AppInfo" ref="appinfo.html"/>
+            <keyword name="AppLockerAndroid" id="AppLockerAndroid" ref="applockerandroid.html"/>
+            <keyword name="AppLockerManager" id="AppLockerManager" ref="applockermanager.html"/>
+            <keyword name="AppLockerUIManager" id="AppLockerUIManager" ref="applockeruimanager.html"/>
+            <keyword name="AppSettings" id="AppSettings" ref="appsettings.html"/>
+            <keyword name="AppsListModel" id="AppsListModel" ref="appslistmodel.html"/>
+            <keyword name="FavouriteInfo" id="FavouriteInfo" ref="favouriteinfo.html"/>
+            <keyword name="FavouriteListModel" id="FavouriteListModel" ref="favouritelistmodel.html"/>
+            <keyword name="FavouriteListView" id="QML.FavouriteListView" ref="qml-qml-fortiymainapplication-favouritelistview.html"/>
+            <keyword name="FavouriteListView" id="QML.Qml-FortiyMainApplication.FavouriteListView" ref="qml-qml-fortiymainapplication-favouritelistview.html"/>
+            <keyword name="Fortify Main Application" id="Fortify Main Application" ref="fortiymainapplication-module.html"/>
+            <keyword name="Fortify-TheAppLocker" id="Fortify-TheAppLocker" ref="fortify-index.html"/>
+            <keyword name="GetInstalledApps" id="AppLockerAndroid::GetInstalledApps" ref="applockerandroid.html#GetInstalledApps"/>
+            <keyword name="GetInstalledApps" id="AppLockerManager::GetInstalledApps" ref="applockermanager.html#GetInstalledApps"/>
+            <keyword name="GetInstalledAppsList" id="AppsListModel::GetInstalledAppsList" ref="appslistmodel.html#GetInstalledAppsList"/>
+            <keyword name="GetInstance" id="AppLockerManager::GetInstance" ref="applockermanager.html#GetInstance"/>
+            <keyword name="GetUnlockedAppsListByIndex" id="FavouriteListModel::GetUnlockedAppsListByIndex" ref="favouritelistmodel.html#GetUnlockedAppsListByIndex"/>
+            <keyword name="How to make Fortify-TheAppLocker Application" id="How to make Fortify-TheAppLocker Application" ref="how-to-make-the-app.html"/>
+            <keyword name="Init" id="AppLockerUIManager::Init" ref="applockeruimanager.html#Init"/>
+            <keyword name="InputField" id="QML.InputField" ref="qml-qml-fortiymainapplication-inputfield.html"/>
+            <keyword name="InputField" id="QML.Qml-FortiyMainApplication.InputField" ref="qml-qml-fortiymainapplication-inputfield.html"/>
+            <keyword name="InstalledAppsListView" id="QML.InstalledAppsListView" ref="qml-qml-fortiymainapplication-installedappslistview.html"/>
+            <keyword name="InstalledAppsListView" id="QML.Qml-FortiyMainApplication.InstalledAppsListView" ref="qml-qml-fortiymainapplication-installedappslistview.html"/>
+            <keyword name="LockApps" id="AppLockerAndroid::LockApps" ref="applockerandroid.html#LockApps"/>
+            <keyword name="LockApps" id="AppLockerManager::LockApps" ref="applockermanager.html#LockApps"/>
+            <keyword name="PopulateFavouriteList" id="FavouriteListModel::PopulateFavouriteList" ref="favouritelistmodel.html#PopulateFavouriteList"/>
+            <keyword name="PopuplateInstalledApps" id="AppsListModel::PopuplateInstalledApps" ref="appslistmodel.html#PopuplateInstalledApps"/>
+            <keyword name="Qml-FortiyMainApplication" id="QML.Qml-FortiyMainApplication" ref="qml-fortiymainapplication-qmlmodule.html"/>
+            <keyword name="ReleaseInstance" id="AppLockerManager::ReleaseInstance" ref="applockermanager.html#ReleaseInstance"/>
+            <keyword name="RemoveFavourite" id="FavouriteListModel::RemoveFavourite" ref="favouritelistmodel.html#RemoveFavourite"/>
+            <keyword name="SetInstalledAppIconsDirectoryPath" id="AppLockerAndroid::SetInstalledAppIconsDirectoryPath" ref="applockerandroid.html#SetInstalledAppIconsDirectoryPath"/>
+            <keyword name="SetInstalledAppIconsDirectoryPath" id="AppLockerManager::SetInstalledAppIconsDirectoryPath" ref="applockermanager.html#SetInstalledAppIconsDirectoryPath"/>
+            <keyword name="TopBar" id="QML.TopBar" ref="qml-qml-fortiymainapplication-topbar.html"/>
+            <keyword name="TopBar" id="QML.Qml-FortiyMainApplication.TopBar" ref="qml-qml-fortiymainapplication-topbar.html"/>
+            <keyword name="UnlockApps" id="AppLockerAndroid::UnlockApps" ref="applockerandroid.html#UnlockApps"/>
+            <keyword name="UnlockApps" id="AppLockerManager::UnlockApps" ref="applockermanager.html#UnlockApps"/>
+            <keyword name="addFavourite" id="AppLockerUIManager::addFavourite" ref="applockeruimanager.html#addFavourite"/>
+            <keyword name="addingNewFavourite" id="InstalledAppsListView::addingNewFavourite" ref="qml-qml-fortiymainapplication-installedappslistview.html#addingNewFavourite-prop"/>
+            <keyword name="backButtonClicked" id="TopBar::backButtonClicked" ref="qml-qml-fortiymainapplication-topbar.html#backButtonClicked-signal"/>
+            <keyword name="back_button_visible" id="TopBar::back_button_visible" ref="qml-qml-fortiymainapplication-topbar.html#back_button_visible-prop"/>
+            <keyword name="bold" id="TopBar::bold" ref="qml-qml-fortiymainapplication-topbar.html#bold-prop"/>
+            <keyword name="data" id="AppsListModel::data" ref="appslistmodel.html#data"/>
+            <keyword name="data" id="FavouriteListModel::data" ref="favouritelistmodel.html#data"/>
+            <keyword name="favouriteName" id="InstalledAppsListView::favouriteName" ref="qml-qml-fortiymainapplication-installedappslistview.html#favouriteName-prop"/>
+            <keyword name="font_size" id="TopBar::font_size" ref="qml-qml-fortiymainapplication-topbar.html#font_size-prop"/>
+            <keyword name="header_text" id="TopBar::header_text" ref="qml-qml-fortiymainapplication-topbar.html#header_text-prop"/>
+            <keyword name="lockFavourite" id="AppLockerUIManager::lockFavourite" ref="applockeruimanager.html#lockFavourite"/>
+            <keyword name="m_icon" id="AppInfo::m_icon" ref="appinfo.html#m_icon-var"/>
+            <keyword name="m_icon" id="FavouriteInfo::m_icon" ref="favouriteinfo.html#m_icon-var"/>
+            <keyword name="m_label" id="AppInfo::m_label" ref="appinfo.html#m_label-var"/>
+            <keyword name="m_locked" id="AppInfo::m_locked" ref="appinfo.html#m_locked-var"/>
+            <keyword name="m_name" id="FavouriteInfo::m_name" ref="favouriteinfo.html#m_name-var"/>
+            <keyword name="m_package_name" id="AppInfo::m_package_name" ref="appinfo.html#m_package_name-var"/>
+            <keyword name="m_unlocked_apps_list" id="FavouriteInfo::m_unlocked_apps_list" ref="favouriteinfo.html#m_unlocked_apps_list-var"/>
+            <keyword name="placeHolderText" id="InputField::placeHolderText" ref="qml-qml-fortiymainapplication-inputfield.html#placeHolderText-prop"/>
+            <keyword name="quickLockApps" id="AppLockerUIManager::quickLockApps" ref="applockeruimanager.html#quickLockApps"/>
+            <keyword name="removeFavourite" id="AppLockerUIManager::removeFavourite" ref="applockeruimanager.html#removeFavourite"/>
+            <keyword name="roleNames" id="AppsListModel::roleNames" ref="appslistmodel.html#roleNames"/>
+            <keyword name="roleNames" id="FavouriteListModel::roleNames" ref="favouritelistmodel.html#roleNames"/>
+            <keyword name="rowCount" id="AppsListModel::rowCount" ref="appslistmodel.html#rowCount"/>
+            <keyword name="rowCount" id="FavouriteListModel::rowCount" ref="favouritelistmodel.html#rowCount"/>
+            <keyword name="textAccepted" id="InputField::textAccepted" ref="qml-qml-fortiymainapplication-inputfield.html#textAccepted-signal"/>
+            <keyword name="toggleAppLock" id="AppLockerUIManager::toggleAppLock" ref="applockeruimanager.html#toggleAppLock"/>
+            <keyword name="toggleAppLock" id="AppsListModel::toggleAppLock" ref="appslistmodel.html#toggleAppLock"/>
+            <keyword name="unlockApps" id="AppLockerUIManager::unlockApps" ref="applockeruimanager.html#unlockApps"/>
+            <keyword name="updateFavourite" id="AppLockerUIManager::updateFavourite" ref="applockeruimanager.html#updateFavourite"/>
+            <keyword name="updateFavouriteAppsView" id="AppLockerUIManager::updateFavouriteAppsView" ref="applockeruimanager.html#updateFavouriteAppsView"/>
+            <keyword name="updateQuickLockView" id="AppLockerUIManager::updateQuickLockView" ref="applockeruimanager.html#updateQuickLockView"/>
+            <keyword name="updateUnlockedAppsList" id="FavouriteListModel::updateUnlockedAppsList" ref="favouritelistmodel.html#updateUnlockedAppsList"/>
+            <keyword name="updatingFavourite" id="InstalledAppsListView::updatingFavourite" ref="qml-qml-fortiymainapplication-installedappslistview.html#updatingFavourite-prop"/>
+        </keywords>
+        <files>
+            <file>appinfo-members.html</file>
+            <file>appinfo.html</file>
+            <file>applockerandroid-members.html</file>
+            <file>applockerandroid.html</file>
+            <file>applockermanager-members.html</file>
+            <file>applockermanager.html</file>
+            <file>applockeruimanager-members.html</file>
+            <file>applockeruimanager.html</file>
+            <file>appsettings.html</file>
+            <file>appslistmodel-members.html</file>
+            <file>appslistmodel.html</file>
+            <file>favouriteinfo-members.html</file>
+            <file>favouriteinfo.html</file>
+            <file>favouritelistmodel-members.html</file>
+            <file>favouritelistmodel.html</file>
+            <file>fortify-index.html</file>
+            <file>fortiymainapplication-module.html</file>
+            <file>how-to-make-the-app.html</file>
+            <file>images/app-screen-1.png</file>
+            <file>images/app-screen-2.png</file>
+            <file>images/app-screen-3.png</file>
+            <file>images/app-screen-4.png</file>
+            <file>qml-fortiymainapplication-qmlmodule.html</file>
+            <file>qml-qml-fortiymainapplication-favouritelistview-members.html</file>
+            <file>qml-qml-fortiymainapplication-favouritelistview.html</file>
+            <file>qml-qml-fortiymainapplication-inputfield-members.html</file>
+            <file>qml-qml-fortiymainapplication-inputfield.html</file>
+            <file>qml-qml-fortiymainapplication-installedappslistview-members.html</file>
+            <file>qml-qml-fortiymainapplication-installedappslistview.html</file>
+            <file>qml-qml-fortiymainapplication-topbar-members.html</file>
+            <file>qml-qml-fortiymainapplication-topbar.html</file>
+            <file>style/cookie-confirm.css</file>
+            <file>style/cookiebar-x.png</file>
+            <file>style/doc_search.png</file>
+            <file>style/gsc.css</file>
+            <file>style/icomoon.eot</file>
+            <file>style/icomoon.svg</file>
+            <file>style/icomoon.ttf</file>
+            <file>style/icomoon.woff</file>
+            <file>style/list_arrow.png</file>
+            <file>style/list_expand.png</file>
+            <file>style/online.css</file>
+            <file>style/tech_preview.svg</file>
+            <file>style/theqtcompany.png</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

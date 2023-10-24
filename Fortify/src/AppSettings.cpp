@@ -58,6 +58,7 @@ void AppSettings::Remove(const Key key) {
 }
 
 /*!
+   \fn template <typename T> static void Write(const Key key, const T &value)
    \fn static void AppSettings::Write(const Key key, const std::string &value)
    \brief The Write(\a key, \a value) function takes enum as key and value of std::string type as arguments and writes it into settings file.
 */
@@ -67,6 +68,7 @@ void AppSettings::Write(const Key key, const std::string &value) {
 }
 
 /*!
+   \fn template <typename T> static T Read(const Key key)
    \fn static std::string AppSettings::Read(const Key key)
    \brief The Read(\a key) function takes enum as key to retrieve data from settings file.
 */

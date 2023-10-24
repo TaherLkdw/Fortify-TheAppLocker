@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- Fortify-index.qdoc -->
+  <meta name="description" content="Tutorial on how to create the app.">
+  <title>How to make Fortify-TheAppLocker Application | Fortify-TheAppLocker 6.6.0</title>
+  <link rel="stylesheet" type="text/css" href="style/online.css" />
+  <link rel="shortcut icon" href="//d33sqmjvzgs8hq.cloudfront.net/wp-content/themes/oneqt/assets/images/favicon.ico.gzip" />
+  <link rel="stylesheet" type="text/css" href="images/htmltabs.css" />
+  <script type="text/javascript"> wpThemeFolder = 'http://qt.io/wp-content/themes/oneqt'; </script>
+  <script type="text/javascript" src="//d33sqmjvzgs8hq.cloudfront.net/wp-includes/js/jquery/jquery.js.gzip"></script>
+  <script type="text/javascript" src="//d33sqmjvzgs8hq.cloudfront.net/wp-includes/js/jquery/jquery-migrate.min.js.gzip"></script>
+  <script type="text/javascript" src="//d33sqmjvzgs8hq.cloudfront.net/wp-content/themes/oneqt/js/combo.js.gzip"></script>
+  <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="text/javascript" src="scripts/extras.js"></script>
+  <script type="text/javascript">
+  $(function(){
+     $("#footer").load("/style/qt-footer.html");
+     $("#sidebar-content").load("style/qt5-sidebar.html");
+  });
+  </script>
+  <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-54043535-2', 'qt.io');
+    ga('set', 'forceSSL', true);
+    ga('send', 'pageview');
+  </script>
+  <script type="text/javascript">
+ $(document).ready(function(){
+   $("input[type=radio]").on("click", function() {
+   var lbl = $(this).next().text();
+   $("input[type=radio]:not(checked)").filter(function() {
+     if ($(this).next().text() == lbl)
+         $(this).prop("checked", true);
+   });
+   });
+ });
+  </script>
+</head>
+<body>
+<div class="header" id="tmpl_header">
+<header class="" id="navbar"><div id="cookie-confirmation" style="display:none"><div id="cookie-confirmation-inner"><p>We bake cookies in your browser for a better experience.  Using this site means that you consent.
+<a href="https://www1.qt.io/terms-conditions/ ">Read more</a></p><div id="cookie-confirmation-buttons-area"><a href="#" id="confirmation-button">Continue »</a>
+</div></div>
+<script>
+    ('#confirmation-button').on('click', function() { ('#cookie-confirmation').fadeOut(); createCookie("cookies_nom", "yum", 180); });
+    if (!(readCookie('cookies_nom') == 'yum')) { ('#cookie-confirmation').fadeIn(); }
+</script>
+</div>
+<div class="container">
+    <div class="navbar-header cf">
+        <div id="mm-wrap">
+            <ul id="mm-helper" class="mm-menu" data-event="hover_intent" data-effect="fade" data-effect-speed="200" data-panel-width="#navbar" data-panel-inner-width="1280px" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="accordion" data-breakpoint="0">
+                <li class="mm-item"><a class="mm-link" href="http://blog.qt.io/" tabindex="0">Blog</a></li>
+                <li class="mm-item"><a class="mm-link" href="https://www.qt.io/contact-us/" tabindex="0">Contact Us</a></li>
+                <li class="mm-item"><a title="Qt Account" class="mm-link" href="https://account.qt.io/" tabindex="0"></a></li>
+            </ul>
+        </div>
+        <a class="navbar-oneQt retina" data-icon="" href="https://www.qt.io/"></a>
+    </div>
+</div>
+</header>
+</div>
+<div class="main">
+<div class="main-rounded">
+<div class="navigationbar">
+    <ul class="sub-navigation">
+        <li><a href="http://wiki.qt.io/">Wiki</a></li>
+        <li><a href="http://doc.qt.io/" class="active">Documentation</a></li>
+        <li><a href="http://forum.qt.io/">Forum</a></li>
+        <li><a href="https://bugreports.qt.io/">Bug Reports</a></li>
+        <li><a href="https://codereview.qt-project.org/">Code Review</a></li>
+    </ul>
+    <div id="main_title_bar">
+        <h1>Qt Documentation</h1>
+        <div class="search_bar">
+        <script>
+            (function() {
+                var cx = '003672281345882769388:1y4pftuq8so';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
+        <gcse:searchbox-only resultsUrl="search-results.html"></gcse:searchbox-only>
+    </div></div>
+    <ul>
+<li><a href="fortify-index.html" translate="no">Fortify-TheAppLocker</a></li>
+<li>How to make Fortify-TheAppLocker Application</li>
+    </ul>
+</div>
+<div class="content">
+    <div class="line">
+        <div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#introduction">Introduction</a></li>
+<li class="level1"><a href="#project-template">Project Template</a></li>
+<li class="level1"><a href="#installed-apps-list-view">Installed Apps List View</a></li>
+<li class="level1"><a href="#favourites-list-view">Favourites List View</a></li>
+<li class="level1"><a href="#main-qml">Main qml</a></li>
+<li class="level1"><a href="#applockeruimanager">AppLockerUIManager</a></li>
+<li class="level1"><a href="#list-models">List Models.</a></li>
+<li class="level1"><a href="#platform-level-code">Platform Level code</a></li>
+<li class="level1"><a href="#interact-with-java-activity-from-cpp">Interact with Java activity from cpp</a></li>
+<li class="level1"><a href="#issues">Issues</a></li>
+<li class="level2"><a href="#application-issues">Application issues</a></li>
+<li class="level1"><a href="#where-to-go-from-here">Where to go from here</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<div class="context">
+<h1 class="title">How to make Fortify-TheAppLocker Application</h1>
+<!-- $$$how-to-make-the-app.html-description -->
+<div class="descr" id="details">
+<h2 id="introduction">Introduction</h2>
+<p>In this tutorial I will strip up basic things like creating screens and implementing cpp business logic to interact with java. This is an in-depth explanation of how to create the mechanics of the Fortify-TheAppLocker app with Felgo. It features sprite <a href="https://doc.qt.io/qt/qml-qtquick-gridview.html" translate="no">GridView</a>, <a href="https://doc.qt.io/qt/qml-qtquick-listview.html" translate="no">ListView</a>, multiple devices &amp; aspect ratios support, textinput and property bindings, interact with java files using JNI.</p>
+<p>We also provide the full source code of Fortify-TheAppLocker made with Felgo on <a href="https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master" translate="no">GitHub</a></p>
+<h2 id="project-template">Project Template</h2>
+<p>Clone/download project to your preferred destination and then open it with Qt Creator. Let me first quickly show you the project structure: All the .hpp and .cpp files are inside the folder /src. All the .qml files and images used by qml are under /qml and /qml/assets folder respectively.</p>
+<p>The java files are inside the folder /android/src/com/lkdw/application/applocker/Fortify folder.</p>
+<p>To create a project from scratch, first go to Felgo Qt creator and create a new sample app project. This will create all the necessary files for all the platforms. Now on top of the existing project structur add new files and code according to your need.</p>
+<h2 id="installed-apps-list-view">Installed Apps List View</h2>
+<p>Use the project tree to navigate to QML, this is where all the qml files are. Now create a new <a href="qml-qml-fortiymainapplication-installedappslistview.html" translate="no">InstalledAppsListView</a> qml file with the following content:</p>
+<pre class="qml" translate="no">Rectangle {
+    property bool addingNewFavourite: false
+    property bool updatingFavourite: false
+    property string favouriteName: favouriteNameInputField.placeHolderText
+    TopBar {
+        header_text: addingNewFavourite ? qsTr(&quot;Add New Favourite&quot;) : (updatingFavourite ? qsTr(&quot;Updating Favourite&quot;) : qsTr(&quot;Quick Lock&quot;))
+        ...
+    }
+
+    InputField {
+        ...
+    }
+
+    GridView {
+        id: appsListView
+        model: app_locker_ui_manager.appsListModel
+        ...
+
+        delegate: Item {
+            id: appDelegateContainer
+            width: appsListView.cellWidth
+            height: appsListView.cellHeight
+
+            Rectangle {
+                id: appDelegate
+                ...
+
+                Rectangle {
+                    id: checkBox
+                    ...
+                }
+
+                Image {
+                    id: icon
+                    source: &quot;file://&quot; + app_locker_ui_manager.installedAppIconsDirPath + model.labelRole + &quot;.png&quot;
+                    ...
+                }
+
+                Text {
+                    id: appName
+                    text: model.labelRole
+                    ...
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                       app_locker_ui_manager.toggleAppLock(index)
+                    }
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: quickLockButton
+        text: addingNewFavourite ? qsTr(&quot;Add New Favourite&quot;) : (updatingFavourite ? qsTr(&quot;Update Favourite&quot;) : qsTr(&quot;Lock Apps&quot;))
+        ...
+    }
+}</pre>
+<p>Here the <a href="qml-qml-fortiymainapplication-topbar.html" translate="no">TopBar</a>, <a href="qml-qml-fortiymainapplication-inputfield.html" translate="no">InputField</a>, <a href="https://doc.qt.io/qt/qml-qtquick-gridview.html" translate="no">GridView</a> and the lock buttons are added in the view. Above copde showcases how to use the common components and implement the <a href="https://doc.qt.io/qt/qml-qtquick-gridview.html" translate="no">GridView</a>. How the delegates are arranged in the view etc. As seen from the code above the model is implemented in cpp which is <a href="appslistmodel.html" translate="no">AppsListModel</a> and data is fetched using model roles. On the click of the delegate cpp method of class <a href="applockeruimanager.html" translate="no">AppLockerUIManager</a> is called which shows how cpp and qml interaction is happening.</p>
+<h2 id="favourites-list-view">Favourites List View</h2>
+<p>After creating the <a href="https://doc.qt.io/qt/qml-qtquick-gridview.html" translate="no">GridView</a> of applications, lets create a <a href="https://doc.qt.io/qt/qml-qtquick-listview.html" translate="no">ListView</a> of favourites. Create a new <a href="qml-qml-fortiymainapplication-favouritelistview.html" translate="no">FavouriteListView</a> qml file with the following content:</p>
+<pre class="qml" translate="no">Rectangle {
+    id: root
+    ...
+
+    TopBar {
+        id: favourite_top_bar
+        back_button_visible: false
+        ...
+    }
+
+    //Show the message when there are no favourites added.
+    Rectangle {
+        id: noFavouriteBackground
+        ...
+        Text {
+            id: noFavouriteText
+            text: qsTr(&quot;No favourites added, please create favourites&quot;)
+            ...
+        }
+    }
+
+    ListView {
+        id: favouriteListView
+        model: app_locker_ui_manager.favouriteListModel
+        ...
+
+        delegate: Item {
+            id: favouriteDelegateContainer
+
+            Rectangle {
+                id: favouriteDelegate
+                ...
+
+                Item {
+                    id: editButtonContainer
+                    ...
+                    Image {
+                        id: editButton
+                        source: &quot;qrc:/qml/assets/edit_icon.png&quot;
+                        ...
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app_locker_ui_manager.updateFavouriteAppsView(index)
+                        }
+                    }
+                }
+
+                Item {
+                    id: deleteButton
+                    ...
+                    Image {
+                        id: deleteIcon
+                        source: &quot;qrc:/qml/assets/delete_icon.png&quot;
+                        ...
+
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app_locker_ui_manager.removeFavourite(index)
+                        }
+                    }
+                }
+
+
+                Text {
+                    id: favouriteName
+                    text: model.nameRole
+                    ...
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            app_locker_ui_manager.lockFavourite(index)
+                            app.apps_locked = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+<p>The above code shows the implementation of how the favourite list view is arranged. The edit and delete buttons are added inside delegates. The model is implemented in cpp which is <a href="favouritelistmodel.html" translate="no">FavouriteListModel</a>.</p>
+<h2 id="main-qml">Main qml</h2>
+<p>In main qml file finally instantiate above mentioned qml types we created.</p>
+<pre class="qml" translate="no">App {
+    licenseKey: &quot;...&quot;
+    id: app
+
+    property bool apps_locked: false
+    ...
+
+    Connections {
+        target: app_locker_ui_manager
+        onFavouriteViewUpdated: {
+            installedAppsListView.updatingFavourite = true
+            installedAppsListView.visible = true
+        }
+    }
+
+    Rectangle {
+        id: root
+        ...
+        TopBar {
+            id: top_bar
+            header_text: qsTr(&quot;Fortify-TheAppLocker&quot;)
+            back_button_visible: false
+            ...
+        }
+        Rectangle {
+            id: stopAppLockBackground
+            visible: app.apps_locked
+            ...
+            Rectangle {
+                id: stopAppLockFavouriteButton
+                ...
+
+                Text {
+                    id: stopAppLockFavouriteText
+                    text: qsTr(&quot;Stop app lock&quot;)
+                    ...
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        app.apps_locked = false
+                        app_locker_ui_manager.unlockApps()
+                    }
+                }
+            }
+        }
+
+        FavouriteListView {
+            id: favouriteListView
+            visible: !app.apps_locked &amp;&amp; !installedAppsListView.visible
+            ...
+        }
+
+        InstalledAppsListView {
+            id: installedAppsListView
+            visible: false
+            ...
+        }
+
+        Rectangle {
+            id: mainActionBar
+            visible: !app.apps_locked &amp;&amp; !installedAppsListView.visible
+            ...
+
+            Rectangle {
+                id: addFavouriteButton
+                ...
+
+                Text {
+                    id: addFavouriteText
+                    text: qsTr(&quot;Add New Favourite&quot;)
+                    ...
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        app_locker_ui_manager.updateQuickLockView()
+                        installedAppsListView.addingNewFavourite = true
+                        installedAppsListView.visible = true
+                    }
+                }
+            }
+
+            Rectangle {
+                id: quickLockButton
+                ...
+
+                Text {
+                    id: quickLockText
+                    text: qsTr(&quot;Quick lock&quot;)
+                    ...
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        app_locker_ui_manager.updateQuickLockView()
+                        installedAppsListView.addingNewFavourite = false
+                        installedAppsListView.visible = true
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+<p>Here the code showcases how both the views we created are instantiated and controlled by the button press events. Notice the <a href="https://felgo.com/doc/felgo-app" translate="no">App</a> component as the root component of the main qml. It is a top-level component of a Felgo application containing all other components.</p>
+<div class="admonition note">
+<p><b>Note: </b>Add all the images and qml assests in resource.qrc files to bundle it inside app while publishing.</p>
+</div>
+<h2 id="applockeruimanager">AppLockerUIManager</h2>
+<p>As mentioned earlier we have the business logic in cpp, we need to imlement one UI manager interface class to interact with qml and cpp. Create a class <a href="applockeruimanager.html" translate="no">AppLockerUIManager</a> which inherits <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> class as shown below:</p>
+<pre class="cpp" translate="no"><span class="keyword">class</span> AppLockerUIManager : <span class="keyword">public</span> <span class="type"><a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></span> {
+    Q_OBJECT
+
+    Q_PROPERTY(AppsListModel<span class="operator">*</span> appsListModel READ appsListModel NOTIFY appsListModelChanged);
+    Q_PROPERTY(FavouriteListModel<span class="operator">*</span> favouriteListModel READ favouriteListModel NOTIFY favouriteListModelChanged);
+    Q_PROPERTY(<span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> installedAppIconsDirPath READ installedAppIconsDirPath NOTIFY installedAppIconsDirPathChanged);
+
+<span class="keyword">public</span>:
+    AppLockerUIManager(<span class="type"><a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></span><span class="operator">*</span> parent <span class="operator">=</span> nullptr);
+    <span class="operator">~</span>AppLockerUIManager();
+
+    <span class="type">void</span> Init();
+
+    Q_INVOKABLE <span class="type">void</span> updateQuickLockView();
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+};</pre>
+<p>Here the code showcaseshow to declare <a href="https://doc.qt.io/qt/qobject.html#Q_PROPERTY" translate="no">Q_PROPERTY</a> and <a href="https://doc.qt.io/qt/qobject.html#Q_INVOKABLE" translate="no">Q_INVOKABLE</a> macros. Please check <a href="applockeruimanager.html" translate="no">AppLockerUIManager</a> class documentation for more reference.</p>
+<h2 id="list-models">List Models.</h2>
+<p>After implementing the UI manager, its time for to implement the list models for installed apps list and favourite list view. List model classes inherits <a href="https://doc.qt.io/qt/qabstractlistmodel.html" translate="no">QAbstractListModel</a> class to reuse its pure virtual functions. Below code showcases the snippet of code of <a href="favouritelistmodel.html" translate="no">FavouriteListModel</a> class:</p>
+<pre class="cpp" translate="no"><span class="keyword">class</span> FavouriteListModel : <span class="keyword">public</span> <span class="type"><a href="https://doc.qt.io/qt/qabstractlistmodel.html" translate="no">QAbstractListModel</a></span> {
+    Q_OBJECT
+
+    <span class="keyword">enum</span> FavouriteListRoles {
+        NameRole <span class="operator">=</span> <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">::</span>UserRole<span class="operator">,</span>
+        IconRole
+    };
+    <span class="keyword">public</span>:
+        <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+
+    <span class="keyword">protected</span>:
+        <span class="type"><a href="https://doc.qt.io/qt/qvariant.html" translate="no">QVariant</a></span> data(<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qmodelindex.html" translate="no">QModelIndex</a></span><span class="operator">&amp;</span> index<span class="operator">,</span> <span class="type">int</span> role <span class="operator">=</span> <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">::</span>DisplayRole) <span class="keyword">const</span> override;
+
+        <span class="type">int</span> rowCount(<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qmodelindex.html" translate="no">QModelIndex</a></span><span class="operator">&amp;</span>) <span class="keyword">const</span> override;
+
+        <span class="type"><a href="https://doc.qt.io/qt/qhash.html" translate="no">QHash</a></span><span class="operator">&lt;</span><span class="type">int</span><span class="operator">,</span> <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span><span class="operator">&gt;</span> roleNames() <span class="keyword">const</span> override;
+};</pre>
+<p>Here three overriden methods are reimplemented to provide data in <a href="https://doc.qt.io/qt/qml-qtquick-listview.html" translate="no">ListView</a> in qml at runtime. Same is applicable for <a href="appslistmodel.html" translate="no">AppsListModel</a> class as well.</p>
+<h2 id="platform-level-code">Platform Level code</h2>
+<p>The app locker needs to continuously monitor which app is currently running on foreground and if that app is locked or not. To do that we need to implement a Java service which runs in background to monitor.</p>
+<pre class="cpp" translate="no"><span class="keyword">public</span> <span class="keyword">class</span> MyService extends Service {
+    Timer mTimer <span class="operator">=</span> null;
+    <span class="keyword">static</span> ArrayList<span class="operator">&lt;</span>String<span class="operator">&gt;</span> mLockAppsList <span class="operator">=</span> null;
+    @Override
+    <span class="keyword">public</span> <span class="type">void</span> onTaskRemoved(Intent rootIntent) {
+        <span class="comment">//Restart service</span>
+        <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="type">int</span> onStartCommand(Intent intent<span class="operator">,</span> <span class="type">int</span> flags<span class="operator">,</span> <span class="type">int</span> startId) {
+        String action <span class="operator">=</span> intent<span class="operator">.</span>getAction();
+        <span class="keyword">switch</span> (action) {
+            <span class="keyword">case</span> ACTION_START: {
+                StartForegroundService(action);
+                mLockAppsList <span class="operator">=</span> intent<span class="operator">.</span>getStringArrayListExtra(<span class="string">&quot;LockApps&quot;</span>);
+                <span class="keyword">break</span>;
+            }
+            <span class="keyword">case</span> ACTION_STOP: {
+                mLockAppsList <span class="operator">=</span> null;
+                <span class="keyword">if</span> (mTimer <span class="operator">!</span><span class="operator">=</span> null) {
+                    mTimer<span class="operator">.</span>cancel();
+                }
+                stopForeground(<span class="keyword">true</span>);
+                <span class="keyword">break</span>;
+            }
+            <span class="keyword">case</span> ACTION_RESTART: {
+                StartForegroundService(action);
+                <span class="keyword">break</span>;
+            }
+        }
+
+        <span class="keyword">return</span> START_STICKY;
+    }
+}</pre>
+<p>Here the service is implemented to run in background, and when service starts main acitivty sends the locked apps list to service. onStartCommand will start timer on ACTION_START command and copy the locked apps list. Also it will stop the timer on ACTION_STOP command. This service will monitor the foreground app and if user opens the app which is locked this service will launch homescreen to put the app in background.</p>
+<pre class="cpp" translate="no"><span class="keyword">private</span> <span class="type">void</span> launcHomeScreen() {
+    Intent startHomescreen <span class="operator">=</span> <span class="keyword">new</span> Intent();
+    startHomescreen<span class="operator">.</span>setAction(Intent<span class="operator">.</span>ACTION_MAIN);
+    startHomescreen<span class="operator">.</span>addCategory(Intent<span class="operator">.</span>CATEGORY_HOME);
+    startHomescreen<span class="operator">.</span>setFlags(Intent<span class="operator">.</span>FLAG_ACTIVITY_NEW_TASK);
+    startActivity(startHomescreen);
+}</pre>
+<p>NOTE:- To run the service in background we need to show notification on the device. Please refer the implementation of the service here: <a href="https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MyService.java" translate="no">MyService.java</a></p>
+<p>To enable the background service in android we need to add the below code in AndroidManifest.xml file:</p>
+<pre class="cpp" translate="no"><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="operator">&lt;</span>service android:name<span class="operator">=</span><span class="string">&quot;com.lkdw.application.applocker.Fortify.MyService&quot;</span>
+android:enabled<span class="operator">=</span><span class="string">&quot;true&quot;</span>
+android:exported<span class="operator">=</span><span class="string">&quot;true&quot;</span>
+android:stopWithTask<span class="operator">=</span><span class="string">&quot;false&quot;</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>intent<span class="operator">-</span>filter<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>action android:name<span class="operator">=</span><span class="string">&quot;com.lkdw.application.applocker.Fortify.MyService.ACTION_RESTART&quot;</span><span class="operator">/</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>action android:name<span class="operator">=</span><span class="string">&quot;com.lkdw.application.applocker.Fortify.MyService.ACTION_START&quot;</span><span class="operator">/</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>action android:name<span class="operator">=</span><span class="string">&quot;com.lkdw.application.applocker.Fortify.MyService.ACTION_STOP&quot;</span><span class="operator">/</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>intent<span class="operator">-</span>filter<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>service<span class="operator">&gt;</span>
+<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="operator">&lt;</span>uses<span class="operator">-</span>permission android:name<span class="operator">=</span><span class="string">&quot;android.permission.FOREGROUND_SERVICE&quot;</span> <span class="operator">/</span><span class="operator">&gt;</span></pre>
+<p>To run the service we need to implement the java activity. Create a java class MainActivity which extends FelgoActivity as shown below:</p>
+<pre class="cpp" translate="no"><span class="keyword">public</span> <span class="keyword">class</span> MainActivity extends FelgoActivity {
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+
+    <span class="keyword">public</span> Map<span class="operator">&lt;</span>String<span class="operator">,</span> String<span class="operator">&gt;</span> GetInstalledApps() {
+        <span class="keyword">if</span> (mInstalledApps <span class="operator">!</span><span class="operator">=</span> null) {
+            mInstalledApps<span class="operator">.</span>clear();
+        }
+        mInstalledApps <span class="operator">=</span> <span class="keyword">new</span> HashMap<span class="operator">&lt;</span>String<span class="operator">,</span> String<span class="operator">&gt;</span>();
+        PackageManager packageManager <span class="operator">=</span> getPackageManager();
+
+        List<span class="operator">&lt;</span>PackageInfo<span class="operator">&gt;</span> packs <span class="operator">=</span> packageManager<span class="operator">.</span>getInstalledPackages(<span class="number">0</span>);
+        <span class="keyword">for</span> (<span class="type">int</span> i <span class="operator">=</span> <span class="number">0</span>; i <span class="operator">&lt;</span> packs<span class="operator">.</span>size(); i<span class="operator">+</span><span class="operator">+</span>) {
+            PackageInfo p <span class="operator">=</span> packs<span class="operator">.</span>get(i);
+            ApplicationInfo a <span class="operator">=</span> p<span class="operator">.</span>applicationInfo;
+            <span class="comment">// skip system apps if they shall not be included</span>
+            <span class="keyword">if</span> (((a<span class="operator">.</span>flags <span class="operator">&amp;</span> ApplicationInfo<span class="operator">.</span>FLAG_SYSTEM) <span class="operator">=</span><span class="operator">=</span> <span class="number">1</span> <span class="operator">|</span><span class="operator">|</span> (a<span class="operator">.</span>flags <span class="operator">&amp;</span> ApplicationInfo<span class="operator">.</span>FLAG_UPDATED_SYSTEM_APP) <span class="operator">=</span><span class="operator">=</span> <span class="number">128</span>)
+                    <span class="operator">&amp;</span><span class="operator">&amp;</span> packageManager<span class="operator">.</span>getLaunchIntentForPackage(p<span class="operator">.</span>packageName) <span class="operator">=</span><span class="operator">=</span> null) {
+                <span class="keyword">continue</span>;
+            }
+            SaveAppIcon(a);
+            mInstalledApps<span class="operator">.</span>put(p<span class="operator">.</span>packageName<span class="operator">,</span> packageManager<span class="operator">.</span>getApplicationLabel(a)<span class="operator">.</span>toString());
+        }
+        <span class="keyword">return</span> mInstalledApps;
+    }
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+}</pre>
+<p>MainActivity is responsible to get the installed apps info from device. It saves the names and icons of the apps to show it on the UI.</p>
+<p>Now we can call the service and pass the locked apps list from the android main activity as below:</p>
+<pre class="cpp" translate="no"><span class="keyword">public</span> <span class="type">void</span> LockApps(final String<span class="operator">[</span><span class="operator">]</span> appsList) {
+    runOnUiThread(<span class="keyword">new</span> Runnable() {
+        @Override
+        <span class="keyword">public</span> <span class="type">void</span> run() {
+            ArrayList<span class="operator">&lt;</span>String<span class="operator">&gt;</span> list <span class="operator">=</span> <span class="keyword">new</span> ArrayList<span class="operator">&lt;</span>String<span class="operator">&gt;</span>(Arrays<span class="operator">.</span>asList(appsList));
+            mServiceIntent <span class="operator">=</span> <span class="keyword">new</span> Intent(getApplicationContext()<span class="operator">,</span> MyService<span class="operator">.</span><span class="keyword">class</span>);
+            mServiceIntent<span class="operator">.</span>setAction(MyService<span class="operator">.</span>ACTION_START);
+            mServiceIntent<span class="operator">.</span>putStringArrayListExtra(<span class="string">&quot;LockApps&quot;</span><span class="operator">,</span> list);
+            <span class="keyword">if</span> (CheckOverlayPermission()) {
+                startForegroundService(mServiceIntent);
+            }
+        }
+    });
+}</pre>
+<p>Add below line in AndroidManifest.xml file after implementing the activity:</p>
+<pre class="cpp" translate="no">android:name<span class="operator">=</span><span class="string">&quot;com.felgo.helper.FelgoApplication&quot;</span></pre>
+<p>For the complete implementation please refer the file: <a href="https://github.com/TaherLkdw/Fortify-TheAppLocker/tree/master/Fortify/android/src/com/lkdw/application/applocker/Fortify/MainActivity.java" translate="no">MainActivity.java</a></p>
+<h2 id="interact-with-java-activity-from-cpp">Interact with Java activity from cpp</h2>
+<p>Now to interact with java classes we need one cpp class which will handle communication between java and cpp. Implement the class <a href="applockerandroid.html" translate="no">AppLockerAndroid</a>. Java activity can be accessed from this cpp class as shown below:</p>
+<pre class="cpp" translate="no"><span class="type"><a href="https://doc.qt.io/qt/qjniobject.html" translate="no">QJniObject</a></span> activity <span class="operator">=</span> <span class="type"><a href="https://doc.qt.io/qt/qnativeinterface-sub-qtcore.html" translate="no">QNativeInterface</a></span><span class="operator">::</span><span class="type">QAndroidApplication</span><span class="operator">::</span>context();
+activity<span class="operator">.</span>callMethod<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>(<span class="string">&quot;LockApps&quot;</span><span class="operator">,</span> <span class="string">&quot;([Ljava/lang/String;)V&quot;</span><span class="operator">,</span> object_array);</pre>
+<p>Above code showcases how to get the context of the java activity to call the java method. To enable these JNI functionality, header files which needed to be include are listed below:</p>
+<pre class="cpp" translate="no"><span class="preprocessor">#include &lt;QJniObject&gt;</span>
+<span class="preprocessor">#include &lt;QJniEnvironment&gt;</span>
+<span class="preprocessor">#include &lt;QtCore/private/qandroidextras_p.h&gt;</span></pre>
+<p>Now the all the components are in place lets go ahead and build the app for android platform.</p>
+<h2 id="issues">Issues</h2>
+<h3 id="application-issues">Application issues</h3>
+<p>In the software development world there are no perfect software exists, so true is for this app also. Below are the issues or improvement needed for future:</p>
+<ul>
+<li>App is supporting only android devices. Need implementation for ios as well, with help help of Felgo's cross platform compatibility UI part can remain same for both.</li>
+<li>Need to add password lock for Fortify app when user has locked the apps and opening the fortify app.</li>
+<li>setExcludeFromRecentApps is not working in some android devices, which allows app to stay hidden from the recent apps tab.</li>
+<li>API documentation usin QDoc has issues while documenting <a href="https://doc.qt.io/qt/qobject.html#Q_PROPERTY" translate="no">Q_PROPERTY</a> for <a href="applockeruimanager.html" translate="no">AppLockerUIManager</a> class, it is not able to find the property in header.</li>
+<li>Also there is a same error for enums in cpp classes, it is not able to find the enum in header.</li>
+</ul>
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+<p>Application development is a continous agile journey. There are many things we can add improve in this app. First priority would be to solve the existing issues and then probably add new features. Apart from above listed issues if anything new is found please add it here in the repo: <a href="https://github.com/TaherLkdw/Fortify-TheAppLocker/issues" translate="no">Issues</a></p>
+</div>
+<!-- @@@how-to-make-the-app.html -->
+   </div>
+   <p class="copy-notice">
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.     The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.     Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<footer id="footerbar">
+    <div class="footer-main">
+            <div class="container clearfix">
+                <nav class="footer-nav clearfix">
+                    <div class="menu-footer-menu-container"><ul id="menu-footer-menu" class="menu"><li id="menu-item-1403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1403"><a href="http://qt.io/download/">Download</a>
+<ul class="sub-menu">
+    <li id="menu-item-11677" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11677"><a href="http://qt.io/download/">Start for Free</a></li>
+    <li id="menu-item-15840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15840"><a href="http://qt.io/download-eval-for-applications-step-2/">Qt for Application Development</a></li>
+    <li id="menu-item-15841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15841"><a href="http://qt.io/request-eval-for-devices-step-2/">Qt for Device Creation</a></li>
+    <li id="menu-item-15838" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15838"><a href="http://qt.io/download-open-source/">Qt Open Source</a></li>
+    <li id="menu-item-1415" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1415"><a href="http://qt.io/terms-conditions/">Terms &amp; Conditions</a></li>
+    <li id="menu-item-14184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14184"><a href="http://qt.io/FAQ/">Licensing FAQ</a></li>
+</ul>
+</li>
+<li id="menu-item-1355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1355"><a href="http://qt.io/product/">Product</a>
+<ul class="sub-menu">
+    <li id="menu-item-12576" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12576"><a href="http://qt.io/product/">Qt in Use</a></li>
+    <li id="menu-item-15848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15848"><a href="http://qt.io/application-development/">Qt for Application Development</a></li>
+    <li id="menu-item-1357" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1357"><a href="http://qt.io/qt-for-device-creation/">Qt for Device Creation</a></li>
+    <li id="menu-item-1356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1356"><a href="http://qt.io/qt-features/">Commercial Features</a></li>
+    <li id="menu-item-15850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15850"><a href="http://qt.io/ide/">Qt Creator IDE</a></li>
+    <li id="menu-item-1359" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1359"><a href="http://qt.io/qt-quick/">Qt Quick</a></li>
+</ul>
+</li>
+<li id="menu-item-1347" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-1347"><a href="http://qt.io/services/">Services</a>
+<ul class="sub-menu">
+    <li id="menu-item-4028" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4028"><a href="http://qt.io/services-technology-evaluation/">Technology Evaluation</a></li>
+    <li id="menu-item-4027" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4027"><a href="http://qt.io/services-proof-of-concept/">Proof of Concept</a></li>
+    <li id="menu-item-4026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4026"><a href="http://qt.io/services-design-implementation/">Design &amp; Implementation</a></li>
+    <li id="menu-item-4025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4025"><a href="http://qt.io/services-productization/">Productization</a></li>
+    <li id="menu-item-15863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15863"><a href="http://qt.io/qt-training/">Qt Training</a></li>
+    <li id="menu-item-4779" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4779"><a href="https://qt.io/partners/">Partner Network</a></li>
+</ul>
+</li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33"><a href="http://qt.io/developers/">Developers</a>
+<ul class="sub-menu">
+    <li id="menu-item-1365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1365"><a href="http://doc.qt.io/">Documentation</a></li>
+    <li id="menu-item-1364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1364"><a href="http://doc.qt.io/qt-5/qtexamplesandtutorials.html">Examples &amp; Tutorials</a></li>
+    <li id="menu-item-1363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1363"><a href="http://doc.qt.io/qt-5/topics-app-development.html">Development Tools</a></li>
+    <li id="menu-item-1361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1361"><a href="http://wiki.qt.io/">Wiki</a></li>
+    <li id="menu-item-1360" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1360"><a href="http://forum.qt.io/">Forums</a></li>
+    <li id="menu-item-15922" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15922"><a href="http://wiki.qt.io/contribute">Contribute to Qt</a></li>
+</ul>
+</li>
+<li id="menu-item-1350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1350"><a href="http://qt.io/about-us/">About us</a>
+<ul class="sub-menu">
+    <li id="menu-item-1353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1353"><a href="http://qt.io/events/">Training &amp; Events</a></li>
+    <li id="menu-item-1354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1354"><a href="http://qt.io/resource-center/">Resource Center</a></li>
+    <li id="menu-item-12285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12285"><a href="http://qt.io/news/">News</a></li>
+    <li id="menu-item-1349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1349"><a href="http://qt.io/careers/">Careers</a></li>
+    <li id="menu-item-11676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11676"><a href="http://qt.io/locations/">Locations</a></li>
+    <li id="menu-item-15911" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15911"><a href="http://qt.io/contact-us">Contact Us</a></li>
+</ul>
+</li>
+</ul></div></nav>
+<a href="http://qt.io/about-us/" target="_blank" class="theqtcompany"></a>
+    <div class="footer-social clearfix">
+        <div class="facebook">
+            <iframe scrolling="no" frameborder="0" allowTransparency="true" src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fqt&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" style="border:none;overflow:hidden;height:21px;"></iframe>
+        </div>
+        <div class="twitter">
+            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.33b190ea0cba008796487b65df7f6d8e.en.html#_=1414403615717&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=qtproject&amp;show_count=true&amp;show_screen_name=false&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 160px; height: 20px;"></iframe>
+        </div>
+    </div>
+</div>
+</div>
+<div class="disclaimer">
+<div class="container clearfix no_discs">
+    <ul id="menu-footer-submenu" class="right clearfix"><li id="menu-item-1795" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1795"><a title="Sign into your account." href="https://account.qt.io/login">Sign In</a></li>
+      <li id="menu-item-10375" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10375"><a href="mailto:feedback@theqtcompany.com?Subject=Feedback%20about%20doc.qt.io%20site">Feedback</a></li>
+      <li id="menu-item-1494" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1494"><a href="http://qt.io/contact-us/">Contact us</a></li>
+      <li id="menu-item-4472" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4472"><a href="http://qt.io/about-us/">© 2023 The Qt Company</a></li>
+    </ul>
+</div>
+</div>
+</footer>
+</div>
+</body>
+</html>
