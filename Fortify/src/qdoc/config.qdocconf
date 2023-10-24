@@ -40,6 +40,13 @@ qhp.Fortify.subprojects.classes.indexTitle = Fortify Main Application
 qhp.Fortify.subprojects.classes.selectors = class fake:headerfile
 qhp.Fortify.subprojects.classes.sortPages = true
 
+
+qhp.Fortify.subprojects         = qmls
+qhp.Fortify.subprojects.qmls.title = Qml Components
+qhp.Fortify.subprojects.qmls.indexTitle = Qml Components
+qhp.Fortify.subprojects.qmls.selectors = class fake:headerfile
+qhp.Fortify.subprojects.qmls.sortPages = true
+
 headers.fileextensions  = "*.h *.hpp"
 sources.fileextensions  = "*.cpp *.qml *.qdoc"
 outputdir = ../../Docs/

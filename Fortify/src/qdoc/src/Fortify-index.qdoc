@@ -158,9 +158,15 @@
                         id: appDelegate
                         ...
 
-                        Rectangle {
+                        Item {
                             id: checkBox
                             ...
+                            visible: model.lockedRole
+                            Image {
+                                id: lockIcon
+                                source: "qrc:/qml/assets/lock_icon.png"
+                                ...
+                            }
                         }
 
                         Image {
