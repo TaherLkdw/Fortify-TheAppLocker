@@ -71,7 +71,6 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 backButtonClicked()
-                root.visible = false
             }
         }
     }

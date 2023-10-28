@@ -39,9 +39,16 @@ FocusScope {
 
     /*!
         \qmlproperty alias InputField::placeHolderText
-        \brief This property is used to provides reference property for textInput component's text property.
+        \brief This property is used to provides reference property for textInput component's placeholderText property.
     */
     property alias placeHolderText: textInput.placeholderText
+
+    /*!
+        \qmlproperty alias InputField::inputText
+        \brief This property is used to provides reference property for textInput component's text property.
+    */
+    property alias inputText: textInput.text
+
     focus: false
 
     Rectangle {
