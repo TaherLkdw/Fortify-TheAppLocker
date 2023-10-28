@@ -6,7 +6,7 @@
     <filterSection>
         <toc>
             <section ref="fortify-index.html" title="Fortify-TheAppLocker">
-                <section ref="fortiymainapplication-module.html" title="C++ Classes">
+                <section ref="qml-fortiymainapplication-qmlmodule.html" title="Qml Components">
                     <section ref="appinfo.html" title="AppInfo Class Reference">
                         <section ref="appinfo-members.html" title="List of all members"/>
                     </section>

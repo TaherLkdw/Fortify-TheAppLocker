@@ -39,15 +39,17 @@ Rectangle {
         \qmlproperty string InstalledAppsListView::favouriteName
         \brief This property is used to save the favourite name set by user.
     */
-    property string favouriteName: favouriteNameInputField.placeHolderText
+    property string favouriteName: ""
 
     TopBar {
         id: top_bar
         header_text: addingNewFavourite ? qsTr("Add New Favourite") : (updatingFavourite ? qsTr("Updating Favourite") : qsTr("Quick Lock"))
         font_size: sp(28)
         onBackButtonClicked: {
+            root.favouriteName = ""
             addingNewFavourite = false
             updatingFavourite = false
+            root.visible = false
         }
     }
 
@@ -56,8 +58,9 @@ Rectangle {
         width: parent.width
         height: visible ? (parent.height/6)/2 - dp(10) : 0
         anchors.top: top_bar.bottom
-        visible: root.addingNewFavourite
+        visible: root.addingNewFavourite || root.updatingFavourite
         placeHolderText: qsTr("Favourite Title")
+        inputText: root.updatingFavourite ? root.favouriteName : ""
         onTextAccepted: (text) => {
             root.favouriteName = text
         }
@@ -181,6 +184,7 @@ Rectangle {
                     app_locker_ui_manager.quickLockApps()
                     app.apps_locked = true
                 }
+                root.favouriteName = ""
                 root.visible = false
             }
         }

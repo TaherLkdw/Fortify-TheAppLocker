@@ -16,7 +16,7 @@
    \qmlmodule Qml-FortiyMainApplication
    \title Qml Components
 
-   \brief The Qml-FortiyMainApplication module provides UI views and controls.
+   \brief The Qml Components module provides UI views and controls.
 
    All the UI components are implemented using QtQuick controls. This page lists down the controls used in the App.
    Check the documentation provided here to know more about the QtQuick.

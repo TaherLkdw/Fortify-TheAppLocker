@@ -85,6 +85,9 @@ App {
             anchors.top: top_bar.bottom
             anchors.bottom: mainActionBar.top
             visible: !app.apps_locked && !installedAppsListView.visible
+            onEditFavourite: (favourite_name) => {
+                installedAppsListView.favouriteName = favourite_name
+            }
         }
 
         InstalledAppsListView {

@@ -23,11 +23,18 @@ Rectangle {
     width: parent.width
     color: app.background_color
 
+    /*!
+        \qmlsignal FavouriteListView::editFavourite(var favourite_name)
+        \brief The editFavourite(\a favourite_name) signal is emitted when user selects any favourite to edit.
+    */
+    signal editFavourite(var favourite_name)
+
     TopBar {
         id: favourite_top_bar
         header_text: qsTr("Favourites")
         back_button_visible: false
         font_size: sp(20)
+        onBackButtonClicked: root.visible = false
     }
 
     Rectangle {
@@ -104,6 +111,7 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             app_locker_ui_manager.updateFavouriteAppsView(index)
+                            editFavourite(model.nameRole)
                         }
                     }
                 }
