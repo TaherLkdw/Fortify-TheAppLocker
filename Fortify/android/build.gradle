@@ -79,5 +79,12 @@ android {
     tasks.withType(JavaCompile) {
         options.incremental = true
     }
+    android {
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+    }
 }
 
