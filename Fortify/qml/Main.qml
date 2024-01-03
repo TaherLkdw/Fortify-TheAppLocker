@@ -23,7 +23,7 @@ App {
     property string grey: "#dddddd"
     property string light_grey: "#999999"
     property string shadow_grey_color: "#B3B3B3"
-    property bool apps_locked: false
+    property bool apps_locked: app_locker_ui_manager.isAppLockerRunning()
 
     Connections {
         target: app_locker_ui_manager

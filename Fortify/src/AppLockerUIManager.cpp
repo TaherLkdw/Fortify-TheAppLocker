@@ -285,3 +285,7 @@ void AppLockerUIManager::lockFavourite(const int favourite_index) {
     locked_apps.shrink_to_fit();
     m_app_locker_manager->LockApps(locked_apps);
 }
+
+bool AppLockerUIManager::isAppLockerRunning() {
+    return m_app_locker_manager->IsAppLockRunning();
+}

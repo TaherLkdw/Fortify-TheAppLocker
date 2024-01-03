@@ -34,6 +34,12 @@ import java.util.Collections;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class MyService extends Service {
     final String TAG = "MyService";
@@ -88,8 +94,9 @@ public class MyService extends Service {
         String action = intent.getAction();
         switch (action) {
             case ACTION_START: {
-                StartForegroundService(action);
                 mLockAppsList = intent.getStringArrayListExtra("LockApps");
+                SaveLockedAppsToFile();
+                StartForegroundService(action);
                 Log.i(TAG, "onStartCommand ACTION_START appsList: " + mLockAppsList.size());
                 //setExcludeFromRecentApps(true); //To-Do:- In samsung not working, need to investigate.
                 break;
@@ -105,13 +112,57 @@ public class MyService extends Service {
                 break;
             }
             case ACTION_RESTART: {
-                Log.i(TAG, "onStartCommand ACTION_RESTART");
+                GetLockedAppsFromFile();
+                Log.i(TAG, "onStartCommand ACTION_RESTART appsList: " + mLockAppsList.size());
                 StartForegroundService(action);
                 break;
             }
         }
 
         return START_STICKY;
+    }
+
+    private void SaveLockedAppsToFile() {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext().openFileOutput("config.txt", Context.MODE_PRIVATE));
+            for (final String data : mLockAppsList) {
+                outputStreamWriter.write(data);
+                outputStreamWriter.write("\n");
+            }
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    private void GetLockedAppsFromFile() {
+
+       try {
+           InputStream inputStream = getApplicationContext().openFileInput("config.txt");
+
+           if ( inputStream != null ) {
+               InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+               BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+               String receiveString = "";
+                mLockAppsList = new ArrayList<String>();
+                mLockAppsList.clear();
+
+               while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    if (!receiveString.isEmpty()) {
+                        mLockAppsList.add(receiveString);
+                    }
+               }
+               inputStream.close();
+               Log.i(TAG, "mLockAppsList.size(): " + mLockAppsList.size());
+           }
+       }
+       catch (FileNotFoundException e) {
+           Log.e("login activity", "File not found: " + e.toString());
+       } catch (IOException e) {
+           Log.e("login activity", "Can not read file: " + e.toString());
+       }
+
     }
 
     private void StartForegroundService(final String start_command_action) {
