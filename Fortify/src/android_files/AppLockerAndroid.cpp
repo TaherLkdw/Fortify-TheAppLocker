@@ -143,3 +143,8 @@ void AppLockerAndroid::SetInstalledAppIconsDirectoryPath(const std::string& path
     QJniObject activity = QNativeInterface::QAndroidApplication::context();
     activity.callMethod<void>("SetInstalledAppIconsDirectoryPath", "(Ljava/lang/String;)V", str);
 }
+
+bool AppLockerAndroid::IsAppLockRunning() const {
+    QJniObject activity = QNativeInterface::QAndroidApplication::context();
+    return activity.callMethod<jboolean>("IsAppLockRunning", "()Z");
+}

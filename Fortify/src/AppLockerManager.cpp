@@ -74,3 +74,7 @@ void AppLockerManager::UnlockApps() {
 void AppLockerManager::SetInstalledAppIconsDirectoryPath(const std::string& path) {
     m_app_locker_android->SetInstalledAppIconsDirectoryPath(path);
 }
+
+bool AppLockerManager::IsAppLockRunning() const {
+    return m_app_locker_android->IsAppLockRunning();
+}

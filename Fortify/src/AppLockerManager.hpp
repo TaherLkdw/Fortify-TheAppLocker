@@ -15,6 +15,7 @@ public:
     void LockApps(const std::vector<std::string>& apps_list);
     void UnlockApps();
     void SetInstalledAppIconsDirectoryPath(const std::string& path);
+    bool IsAppLockRunning() const;
 
 private:
     AppLockerManager();

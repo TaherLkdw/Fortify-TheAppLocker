@@ -1,6 +1,7 @@
 package com.lkdw.application.applocker.Fortify;
 
 import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -25,6 +26,7 @@ import android.util.Base64;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.Integer;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +42,7 @@ public class MainActivity extends FelgoActivity {
     private final int MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 353;
     private final int OVERLAY_PERMISSION_RESULT_OK_CODE = 0;
 
+    ArrayList<String> mLockedAppsList;
     private Intent mServiceIntent = null;
     private Map<String, String> mInstalledApps = null;
     private File mInstalledAppIconsDirectory = null;
@@ -65,9 +68,6 @@ public class MainActivity extends FelgoActivity {
             //request permission from user, which is mandatory after android 6.0
             //this is an async call which will trigger onRequestPermissionsResult after user input
             requestPermissions(permission_type_strings_array, ACCESS_PERMISSION_MULTIPLE_REQUEST);
-        }
-        if (isMyServiceRunning(MyService.class)) {
-            //Launch applocker running UI
         }
     }
 
@@ -107,6 +107,17 @@ public class MainActivity extends FelgoActivity {
                 startService(mServiceIntent);
             }
         }
+    }
+
+    public boolean IsAppLockRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        Class<?> serviceClass = MyService.class;
+        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void SetInstalledAppIconsDirectoryPath(final String path) {
@@ -187,10 +198,10 @@ public class MainActivity extends FelgoActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ArrayList<String> list = new ArrayList<String>(Arrays.asList(appsList));
+                mLockedAppsList = new ArrayList<String>(Arrays.asList(appsList));
                 mServiceIntent = new Intent(getApplicationContext(), MyService.class);
                 mServiceIntent.setAction(MyService.ACTION_START);
-                mServiceIntent.putStringArrayListExtra("LockApps", list);
+                mServiceIntent.putStringArrayListExtra("LockApps", mLockedAppsList);
                 if (CheckOverlayPermission()) {
                     startForegroundService(mServiceIntent);
                 }
@@ -214,10 +225,11 @@ public class MainActivity extends FelgoActivity {
             @Override
             public void run() {
                 Log.i(TAG, "UnlockApps" );
-                if (mServiceIntent != null) {
-                    mServiceIntent.setAction(MyService.ACTION_STOP);
-                    startForegroundService(mServiceIntent);
+                if (mServiceIntent == null) {
+                    mServiceIntent = new Intent(getApplicationContext(), MyService.class);
                 }
+                mServiceIntent.setAction(MyService.ACTION_STOP);
+                startForegroundService(mServiceIntent);
             }
         });
     }
@@ -239,17 +251,5 @@ public class MainActivity extends FelgoActivity {
             }
         }
         fileOrDirectory.delete();
-    }
-
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                Log.i (TAG, "Service status" + "Running");
-                return true;
-            }
-        }
-        Log.i (TAG, "Service status" + "Not running");
-        return false;
     }
 }

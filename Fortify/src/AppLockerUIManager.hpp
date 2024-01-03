@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE void updateFavouriteAppsView(const int favourite_index);
     Q_INVOKABLE void updateFavourite();
     Q_INVOKABLE void lockFavourite(const int favourite_index);
+    Q_INVOKABLE bool isAppLockerRunning();
 
 signals:
     void appsListModelChanged();
