@@ -27,7 +27,7 @@ Rectangle {
         \qmlsignal FavouriteListView::editFavourite(var favourite_name)
         \brief The editFavourite(\a favourite_name) signal is emitted when user selects any favourite to edit.
     */
-    signal editFavourite(var favourite_name)
+    signal editFavourite(var favourite_name, var selected_index)
 
     TopBar {
         id: favourite_top_bar
@@ -110,8 +110,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            app_locker_ui_manager.updateFavouriteAppsView(index)
-                            editFavourite(model.nameRole)
+                            editFavourite(model.nameRole, index)
                         }
                     }
                 }

@@ -197,6 +197,8 @@ void AppLockerUIManager::unlockApps() {
    using AddFavourite() interface.
 */
 void AppLockerUIManager::addFavourite(const QString& favourite_name) {
+    if (favourite_name.isEmpty()) return;
+
     const auto& apps_list = m_apps_list_model->GetInstalledAppsList();
     std::vector<std::string> unlocked_apps;
     //NOTE:- In favourites list we only save unlocked apps names

@@ -41,14 +41,22 @@ Rectangle {
     */
     property string favouriteName: ""
 
+    onVisibleChanged: {
+        if (!visible) {
+            root.favouriteName = ""
+            favouriteNameInputField.inputText = ""
+        } else if (root.updatingFavourite) {
+            favouriteNameInputField.inputText = root.favouriteName
+        }
+    }
+
     TopBar {
         id: top_bar
         header_text: addingNewFavourite ? qsTr("Add New Favourite") : (updatingFavourite ? qsTr("Updating Favourite") : qsTr("Quick Lock"))
         font_size: sp(28)
         onBackButtonClicked: {
-            root.favouriteName = ""
-            addingNewFavourite = false
-            updatingFavourite = false
+            root.addingNewFavourite = false
+            root.updatingFavourite = false
             root.visible = false
         }
     }
@@ -59,10 +67,12 @@ Rectangle {
         height: visible ? (parent.height/6)/2 - dp(10) : 0
         anchors.top: top_bar.bottom
         visible: root.addingNewFavourite || root.updatingFavourite
-        placeHolderText: qsTr("Favourite Title")
-        inputText: root.updatingFavourite ? root.favouriteName : ""
+        placeHolderText: qsTr("Favourite Title")        
         onTextAccepted: (text) => {
             root.favouriteName = text
+        }
+        onFocusChanged: {
+            root.favouriteName = root.visible ? favouriteNameInputField.inputText : root.favouriteName
         }
     }
 
@@ -174,17 +184,16 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if (addingNewFavourite) {
-                    addingNewFavourite = false
-                    app_locker_ui_manager.addFavourite(favouriteName)
-                } else if (updatingFavourite) {
-                    updatingFavourite = false
+                if (root.addingNewFavourite) {
+                    root.addingNewFavourite = false
+                    app_locker_ui_manager.addFavourite(root.favouriteName)
+                } else if (root.updatingFavourite) {
+                    root.updatingFavourite = false
                     app_locker_ui_manager.updateFavourite()
                 } else {
                     app_locker_ui_manager.quickLockApps()
                     app.apps_locked = true
                 }
-                root.favouriteName = ""
                 root.visible = false
             }
         }

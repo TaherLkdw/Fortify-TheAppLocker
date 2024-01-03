@@ -85,8 +85,9 @@ App {
             anchors.top: top_bar.bottom
             anchors.bottom: mainActionBar.top
             visible: !app.apps_locked && !installedAppsListView.visible
-            onEditFavourite: (favourite_name) => {
-                installedAppsListView.favouriteName = favourite_name
+            onEditFavourite: (favourite_name, selected_index) => {
+                installedAppsListView.favouriteName = favourite_name //First set the name then update page
+                app_locker_ui_manager.updateFavouriteAppsView(selected_index)
             }
         }
 
