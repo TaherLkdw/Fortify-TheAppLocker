@@ -26,6 +26,8 @@
             <meta-data android:name="android.app.extract_android_style" android:value="minimal"/>
             <meta-data android:name="android.app.background_running" android:value="true"/>
         </activity>
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+                   android:value="ca-app-pub-7369013909167745~4495852008"/>
         <service android:name="com.lkdw.application.applocker.Fortify.MyService"
                   android:enabled="true"
                   android:foregroundServiceType="specialUse"
