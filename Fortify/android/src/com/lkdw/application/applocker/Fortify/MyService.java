@@ -206,7 +206,7 @@ public class MyService extends Service {
                 .setContentTitle(NOTIFICAION_CONTENT_TITLE)
                 .setContentText(NOTIFICAION_CONTENT_TEXT)
                 .setContentIntent(pendingIntent) //To-Do: Crash observed on click of notification.
-                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setOngoing(true)
                 .setAutoCancel(false)
