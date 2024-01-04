@@ -14,7 +14,7 @@ set(PRODUCT_VERSION_NAME "1.0.0")
 set(PRODUCT_VERSION_CODE 1)
 
 # Set either "test" or "publish" stage:
-set(PRODUCT_STAGE "test")
+set(PRODUCT_STAGE "publish")
 
 # Optionally set a license key that is used instead of the license key from
 # main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)
