@@ -2,7 +2,7 @@
     "title": "Fortify",
     "identifier": "com.lkdw.application.applocker.Fortify",
     "orientation": "auto",
-    "versioncode": 1,
+    "versioncode": 5,
     "versionname": "1.0.0",
     "stage": "publish"
 }

@@ -11,7 +11,7 @@ find_package(Felgo REQUIRED)
 # More information: https://felgo.com/doc/felgo-publishing/#project-configuration
 set(PRODUCT_IDENTIFIER "com.lkdw.application.applocker.Fortify")
 set(PRODUCT_VERSION_NAME "1.0.0")
-set(PRODUCT_VERSION_CODE 1)
+set(PRODUCT_VERSION_CODE 5)
 
 # Set either "test" or "publish" stage:
 set(PRODUCT_STAGE "publish")
