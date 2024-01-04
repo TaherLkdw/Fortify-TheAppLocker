@@ -8,7 +8,7 @@ App {
     //  * Publish your games & apps for the app stores
     //  * Remove the Felgo Splash Screen or set a custom one (available with the Pro Licenses)
     //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
-    licenseKey: "2D22691797E3DF842A438B1D1BD57B29AC9BC318300A6886F5685DFB344F40BF67B9CD07A513B12C79D905142ABE0CAD64A964C05CB1C697D7D77AFECE8E3A097F3E1E4884FD67530FAA0CA1E78ED544415CD6101619117C4B313B277F21BCE4387A85B4B67512EF604F15ABE1EF5E8362AD640F3AE2D41F1BAB74F6C42EDE3B9F01BE451207A3B8D0E4061C34764395435A16E869B71DEF3DC255D498C67486BB2F6301D5AC78465C419CE1D27009B7BCFEA6E8F39DECDFB2557A6696FAF34927F471AA7E238DD5201E3B9EB6AD64F57EEE3673DE0E7AC5DBA5BBB2298EF6A2DDD6C8BC1F79AB83603680194288187F3635FF6AC9F7831E8EDD22ABE0D7B5BA48A6B115BAF6A1C0A2C1CE9016AEDAB9039BE27F4A872C54DB0AF9A3FF045F3430031C11B8D7C009155E63D0013BAA4B8B0F19EC01F03ACA491DF09A440F5769"
+    licenseKey: "23AC3D3A12E92677CB47D120F31C41987DF9FEF9F197A30F0CB297D702A0E84BB0D79A9A375BE61309B09CFDFBA88E4C85776305C020207F1B47A459816A917335511278B17813D521F510BDAEB456BAAACCBFEC10F397AE5ACAD6A77A2D45AD7F7FA94B0537FCFAB432D18E0CC115E07FCC2EE40C8AD4F59186E655C060EE0C37221654152FC172037AE3E81A9A10DF8C3EAB8BF4668C1572A8AA07891B51ADB448E16A7B013B076E67D893E2C7BEDD2136627638D043D0BED9AEF4D9BD5CC287F2BF4B44A41F018305E7A584D7D9FB09B577CAFE0FCFC6A81464BD371A1E0DFADC4C446682A7DB24E944A20456BB9658F953EA4853D207BE25C7D00BD1DF6C25846E9270CB55504AF8246886A548AC045A89D6109F87D268F01EFD9583B21B9AB7A0056F794BE3740813CBEE68D0AB67DF429EF75279A818D692C9645BEF39EEF426B08EFC75F885683B3BBDC37F61"
 
     id: app
     visible: true
@@ -28,6 +28,7 @@ App {
     Connections {
         target: app_locker_ui_manager
         onFavouriteViewUpdated: {
+            interstitial.showInterstitialIfLoaded()
             installedAppsListView.updatingFavourite = true
             installedAppsListView.visible = true
         }
@@ -36,6 +37,7 @@ App {
     Rectangle {
         id: root
         anchors.fill: parent
+        anchors.bottom: adMobBanner.top
         color: title_bar_color
 
         TopBar {
@@ -131,6 +133,7 @@ App {
                     anchors.fill: parent
                     onClicked: {
                         app_locker_ui_manager.updateQuickLockView()
+                        interstitial.showInterstitialIfLoaded()
                         installedAppsListView.addingNewFavourite = true
                         installedAppsListView.visible = true
                     }
@@ -166,5 +169,24 @@ App {
                 }
             }
         }
+    }
+
+    // Plugin Item
+    AdMobBanner {
+        id: adMobBanner
+        adUnitId: "ca-app-pub-7369013909167745/1490414716"
+        banner: AdMobBanner.Smart
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        testDeviceIds: ["46AB44CA8FD7D0E913476B95FBDF029D"]
+
+    }
+
+    // Plugin Item
+    AdMobInterstitial {
+        id: interstitial
+        adUnitId: "ca-app-pub-9155324456588158/9075427220" //To-Do: replace with your AdMob adUnitId
+        onPluginLoaded: loadInterstitial()
     }
 }
